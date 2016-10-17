@@ -1,0 +1,6 @@
+div.withSidebar
+    #[frag sidebar]
+
+    div#main.content
+        p
+            "TODO write about hardware extensions"

@@ -1,0 +1,29 @@
+div.withSidebar
+    #[frag sidebar]
+
+    div#main.content
+        p
+            "Getting started with kftc isn't really too difficult. Just as you forked the `ftc_app` repository to work with the standard sdk, you must also fork kftc (which itself is a fork of ftc_app, so you may only fork one per person/organization). After you do that, write your programs in the TeamCode module just as you would regularly."
+
+        ol
+            li < "Fork the project on [github](https://github.com/addonovan/kftc#fork-destination-box)"
+            li
+                "Clone the repository to your disk"
+
+                pre < code.bash&noIndent
+                    "$ git clone &lt;destination&gt; &lt;your git file&gt;"
+                
+                p.note
+                    "Your git file can be found by going to the project's page on github, and clicking on the green button that says 'clone or download' and copying the https link (if you use ssh, then you probably know how to do this already)."
+
+            li < "Develop in the TeamCode module"
+            li
+                "Update kftc by using git"
+                pre < code.bash&noIndent
+                    "$ git checkout -b update"
+                    "$ git pull https://github.com/addonovan/kftc.git"
+                    "  fix any possible merge conflicts"
+                    "$ git checkout &lt;previous branch&gt;"
+                    "$ git merge --no-ff update"
+                    "$ git push"
+                    "$ git branch -D update"

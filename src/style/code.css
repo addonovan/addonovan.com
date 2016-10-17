@@ -1,0 +1,7 @@
+pre,
+pre *,
+pre code *
+{
+	font-size: 11pt !important;
+	font-family: "monospace" !important;
+}

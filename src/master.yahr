@@ -1,0 +1,59 @@
+option(name: "out-dir")   < "../"
+option(name: "embed-css") < "true"
+option(name: "condense")  < "true"
+
+defaults
+    fragment(name: "main") < "frag/main.frag"
+    fragment(name: "nav")  < "frag/nav.frag"
+
+    css(name: "main") < "style/main.css"
+    css(name: "nav")  < "style/nav.css"
+    css(name: "code") < "style/code.css"
+
+    alias(name: "project") < ""
+    alias(name: "title") < "Lorem Ipsum"
+
+
+page(path: "index.page")
+    alias(name: "title") < "Projects"
+
+page(path: "404.page")
+    alias(name: "title") < "404: File Not Found"
+
+
+
+page(path: "kftc/index.page")
+    alias(name: "project") < "kftc"
+    alias(name: "title") < "kftc"
+    css(name: "sidebar") < "style/sidebar.css"
+    fragment(name: "sidebar") < "frag/kftc-sidebar.frag"
+
+page(path: "kftc/getting-started.page")
+    alias(name: "project") < "kftc"
+    alias(name: "title") < "Getting Started"
+    css(name: "sidebar") < "style/sidebar.css"
+    fragment(name: "sidebar") < "frag/kftc-sidebar.frag"
+
+page(path: "kftc/lifecycle.page")
+    alias(name: "project") < "kftc"
+    alias(name: "title") < "OpMode Lifecycle"
+    css(name: "sidebar") < "style/sidebar.css"
+    fragment(name: "sidebar") < "frag/kftc-sidebar.frag"
+
+page(path: "kftc/configuration.page")
+    alias(name: "project") < "kftc"
+    alias(name: "title") < "OpMode Configuration"
+    css(name: "sidebar") < "style/sidebar.css"
+    fragment(name: "sidebar") < "frag/kftc-sidebar.frag"
+
+page(path: "kftc/hardware-extensions.page")
+    alias(name: "project") < "kftc"
+    alias(name: "title") < "Hardware Extensions"
+    css(name: "sidebar") < "style/sidebar.css"
+    fragment(name: "sidebar") < "frag/kftc-sidebar.frag"
+
+page(path: "kftc/tasks.page")
+    alias(name: "project") < "kftc"
+    alias(name: "title") < "Tasks"
+    css(name: "sidebar") < "style/sidebar.css"
+    fragment(name: "sidebar") < "frag/kftc-sidebar.frag"

@@ -1,0 +1,36 @@
+div.withSidebar div#sidebar
+{
+	float: left;
+
+	margin-left: 7%;
+	width: 15%;
+}
+
+	div.withSidebar div#sidebar h2
+	{
+		font-size: 24px;
+	}
+
+	div.withSidebar div#sidebar ul
+	{
+		padding-left: 15px;
+		margin-top: 2px;
+	}
+
+		div.withSidebar div#sidebar ul li
+		{
+			list-style: none;
+		}
+
+			div.withSidebar div#sidebar ul li a
+			{
+				font-style: italic;
+			}
+
+div.withSidebar div#main
+{
+	float: left;
+
+	margin-left: 3%;
+	width: 50%;
+}
