@@ -8,7 +8,7 @@ div#sidebar
             ul
                 li < a(href: "/kftc/opmodes.html#lifecycle") < "Lifecycle"
                 li < a(href: "/kftc/opmodes.html#hardware") < "Hardware"
+                li < a(href: "/kftc/opmodes.html#configuration") < "Configuration"
 
-        li < a(href: "/kftc/configuration.html") < "Configuration"
         li < a(href: "/kftc/hardware-extensions.html") < "Hardware Extensions"
         li < a(href: "/kftc/tasks.html") < "Tasks"

@@ -19,49 +19,68 @@ ul.nostyle
 }
 
 /*
- * paragraphs
+ * links
  */
 
-p
+a
 {
-    text-align: justify;
-    line-height: 1.5em;
-    text-indent: 25px;
-    margin-top: 0;
+    color: #00796B;
+    text-decoration: none;
+    font-weight: bold;
 }
 
-    p a
-    {
-        color: #00796B;
-        text-decoration: none;
-        font-weight: bold;
-    }
+a:hover { color: #bf0a30; }
 
-    p a:hover { color: #bf0a30; }
+/*
+ * articles
+ */
 
-    p.note
-    {
-        font-size: 12pt;
-        color: rgba(0,0,0,0.54);
-    }
-
-    p.desc
-    {
-        line-height: 1.75em;
-    }
-
-    p.footer
-    {
-        font-size: 10pt;
-        color: rgba(0,0,0,0.35);
-        text-align: center;
-        clear: both; /* ensure's it will be beneath any floating things */
-    }
-
-pre
+div.article
 {
-    margin: 0; 
+    border-bottom: 1.5px solid rgba(0,0,0,0.54);
+    padding-bottom: 2em !important;
+    margin-bottom: 4em !important;
 }
+
+    div.article p
+    {
+        text-align: justify;
+        line-height: 1.5em;
+        text-indent: 1em;
+        margin-bottom: 0 !important;
+    }
+
+        div.article p:not(:first-child)
+        {
+            margin-top: 20px;
+        }
+
+        p.note
+        {
+            font-size: 12pt;
+            color: rgba(0,0,0,0.54);
+            text-indent: 0;
+        }
+
+        p.desc
+        {
+            line-height: 1.75em;
+        }
+
+        p.footer
+        {
+            font-size: 10pt;
+            color: rgba(0,0,0,0.35);
+            text-align: center;
+            clear: both; /* ensure's it will be beneath any floating things */
+        }
+
+    div.article pre
+    {
+        margin: 0;
+        border: 1px solid black;
+        margin: 25px 2% 0px 2%;
+    }
 
 /*
  * div.content styles

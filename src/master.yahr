@@ -41,12 +41,6 @@ page(path: "kftc/opmodes.page")
     css(name: "sidebar") < "style/sidebar.css"
     fragment(name: "sidebar") < "frag/kftc-sidebar.frag"
 
-page(path: "kftc/configuration.page")
-    alias(name: "project") < "kftc"
-    alias(name: "title") < "OpMode Configuration"
-    css(name: "sidebar") < "style/sidebar.css"
-    fragment(name: "sidebar") < "frag/kftc-sidebar.frag"
-
 page(path: "kftc/hardware-extensions.page")
     alias(name: "project") < "kftc"
     alias(name: "title") < "Hardware Extensions"
