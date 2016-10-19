@@ -20,12 +20,14 @@ div.withSidebar div#sidebar
 		div.withSidebar div#sidebar ul li
 		{
 			list-style: none;
+			margin-bottom: 2px;
 		}
 
-			div.withSidebar div#sidebar ul li a
-			{
-				font-style: italic;
-			}
+		div.withSidebar div#sidebar ul li ul
+		{
+			margin-left: 15px;
+			margin-bottom: 5px;
+		}
 
 div.withSidebar div#main
 {

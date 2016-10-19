@@ -9,6 +9,7 @@ defaults
     css(name: "main") < "style/main.css"
     css(name: "nav")  < "style/nav.css"
     css(name: "code") < "style/code.css"
+    css(name: "wdmu") < "style/wdmu.css"
 
     alias(name: "project") < ""
     alias(name: "title") < "Lorem Ipsum"
@@ -34,9 +35,9 @@ page(path: "kftc/getting-started.page")
     css(name: "sidebar") < "style/sidebar.css"
     fragment(name: "sidebar") < "frag/kftc-sidebar.frag"
 
-page(path: "kftc/lifecycle.page")
+page(path: "kftc/opmodes.page")
     alias(name: "project") < "kftc"
-    alias(name: "title") < "OpMode Lifecycle"
+    alias(name: "title") < "OpModes"
     css(name: "sidebar") < "style/sidebar.css"
     fragment(name: "sidebar") < "frag/kftc-sidebar.frag"
 

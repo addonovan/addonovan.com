@@ -3,7 +3,7 @@ div.withSidebar
 
     div#main.content
         p
-            "Getting started with kftc isn't really too difficult. Just as you forked the `ftc_app` repository to work with the standard sdk, you must also fork kftc (which itself is a fork of ftc_app, so you may only fork one per person/organization). After you do that, write your programs in the TeamCode module just as you would regularly."
+            "Getting started with kftc isn't really too difficult. Just as you forked the `ftc\_app` repository to work with the standard sdk, you must also fork kftc (which itself is a fork of ftc\_app, so you may only fork one per person/organization). After you do that, write your programs in the TeamCode module just as you would regularly."
 
         ol
             li < "Fork the project on [github](https://github.com/addonovan/kftc#fork-destination-box)"
@@ -11,7 +11,7 @@ div.withSidebar
                 "Clone the repository to your disk"
 
                 pre < code.bash&noIndent
-                    "$ git clone &lt;destination&gt; &lt;your git file&gt;"
+                    "$ git clone <destination> <your git file>"
                 
                 p.note
                     "Your git file can be found by going to the project's page on github, and clicking on the green button that says 'clone or download' and copying the https link (if you use ssh, then you probably know how to do this already)."

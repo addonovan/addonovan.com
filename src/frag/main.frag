@@ -23,4 +23,4 @@ body
 
         div
             p.fglh.footer
-                "Copyright &copy; 2016 Austin Donovan. All Rights Reserved. \n"
+                "Copyright &copy; 2016 Austin Donovan. All Rights Reserved."

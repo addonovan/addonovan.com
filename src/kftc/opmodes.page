@@ -5,6 +5,7 @@ div.withSidebar
         p
             "When I was a programmer on an FTC team, one of the bigger annoyances with FTC's sdk was the weird OpMode lifecycle. The annoying part was that the hardware map wasn't a static variable, which means that it was `null` until `init()` was called, forcing the delcaration and initialization of the fields to be separated, for no reason other than lack of foresight on the author's side. (This is to say, if the `hardwareMap` field were `static`, and set *before* the OpModes are initialized, then the initialization could be done in one line). In kotlin, this forces the user to make `lateinit var`s instead of `val`s, when, really, hardware values should be forced to be constant just in case."
 
+        a(name: "lifecycle")
         h2 < "The New Lifecycle"
         p
             "The solution to this was redesigning the OpMode lifecycle in a way that wouldn't force declaration and initialization to occur at different places. This is more beneficial than simply allowing the variable's creation and assignment to happen in one place (which helps to make sure that the variable has been initialized *before* it's run and a `NullPointerException` is thrown), but it also allows for the hardware devices to be marked as `val`s and ensure that their values will never be null nor will they be reassigned."
@@ -24,17 +25,18 @@ div.withSidebar
             "    }"
             "}"
 
+        a(name: "hardware")
         h2 < "The Hardware Definition"
         p
             "While the above code snippet is valid, this is not the recommended route to go for hardware initialization. If you have used v2.+ of the standard sdk, then you will know that they encourage separating the hardware information from the OpMode class, and this is also encouraged in kftc; however, there is a little bit more of an API for it, rather than a completely detached class from the rest of the sdk."
 
         p
-            "In kftc, there is an interface called `HardwareDefinition`, which provides convenience access to the hardware map and an improved method to get HardwareExtensions as well. To access the hardware definition inside the OpMode, simply create a blank companion object which inherits from it. Now, anything defined in the hardware definition file can be referenced directly, as if it were defined in the same class. This is different than having a separate field (which must be initialized manually during `init()`) where the name of the field must be written prior to the hardware device."
+            "In kftc, there is an abstract class called `HardwareDefinition`, which provides convenience access to the hardware map and an improved method to get HardwareExtensions as well. To access the hardware definition inside the OpMode, simply create a blank companion object which inherits from it. Now, anything defined in the hardware definition file can be referenced directly, as if it were defined in the same class. This is different than having a separate field (which must be initialized manually during `init()`) where the name of the field must be written prior to the hardware device."
 
         pre < code.kotlin&noIndent
-            "class MyHardwareDefinition : HardwareDefinition"
+            "abstract class MyHardwareDefinition : HardwareDefinition()"
             "{"
-            "    private val motorLeft: DcMotor = get( &quot;motor_left&quot; );"
+            "    val motorLeft: DcMotor = get( &quot;motor_left&quot; );"
             "}"
             ""
             "@TeleOp( name = &quot;My TeleOp&quot; )"
@@ -42,7 +44,7 @@ div.withSidebar
             "{"
             "    companion object : MyHardwareDefinition();"
             ""
-            "    public override fun loop()"
+            "    override fun loop()"
             "    {"
             "        motorLeft.power = 1.0;"
             "    }"
