@@ -1,1 +1,2 @@
-webdev.log
+*.log
+.fuse_hidden*
