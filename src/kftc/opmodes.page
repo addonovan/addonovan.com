@@ -4,7 +4,18 @@ div.withSidebar
     div#main.content
         div.article
             p
-                "When I was a programmer on an FTC team, one of the bigger annoyances with FTC's sdk was the weird OpMode lifecycle. The annoying part was that the hardware map wasn't a static variable, which means that it was `null` until `init()` was called, forcing the delcaration and initialization of the fields to be separated, for no reason other than lack of foresight on the author's side. (This is to say, if the `hardwareMap` field were `static`, and set *before* the OpModes are initialized, then the initialization could be done in one line). In kotlin, this forces the user to make `lateinit var`s instead of `val`s, when, really, hardware values should be forced to be constant just in case."
+                "I've been using Java since I turned 13, so when I heard that FTC was moving to a Java/Android programming solution (instead of the god-awful RobotC/Mindstorms we'd been stuck with) for my last year on the team, I was ecstatic! However, this quickly changed when I realized that the OpMode SDK was &mdash; at least in my opinion &mdash; more of a mess than before!"
+
+            p
+                "My top three grievances with the OpMode SDK are listed below"
+                ol
+                    li < "The OpMode lifecycle required delayed initialization"
+                    li
+                        "There was no recommended way to share hardware definitions"
+                        p.note < "This was actually 'fixed' in v2.0 of the SDK; however, I'm still personally dissatisfied with their solution, as it's more of a disgusting hack (coming from me!) than something that they built in support for."
+                    li < "There was still no way for configurable variables"
+                "And, oddly enough, if you look at the sidebar, you'll notice three sub-sections, which correspond to these."
+
 
         div.article
             a(name: "lifecycle")
@@ -54,9 +65,61 @@ div.withSidebar
                 "}"
 
         div.article
-            a(name: "configuraiton")
+            a(name: "configuration")
             h2 < "Configuration"
             p
-                "Hello"
+                "Perhaps the most important part of kftc is the configuration framework. It's super simple to implement in your KOpModes and easy to use. Now, maybe you can't think of any time that configurable variables might be useful, so here are a few examples"
+                ul
+                    li < "A boolean indicating which alliance you're on"
+                    li < "Sensor sensitivities"
+                    li
+                        "Autonomous motor powers"
+                        p.note < "This is especially useful when debugging autonomous programs!"
+                    li < "Time delays for autonomous"
+
+            h3 < "Okay, so how do I implement them?"
+
+            pre < code.kotlin&noIndent
+                "class MyOpMode : KOpMode()"
+                "{"
+                "    // If there is no configured value for the given name"
+                "    //    then the second value (the default) is returned"
+                "    //    instead"
+                "    private val myBooleanValue = get( &quot;My Boolean Value's Name&quot;, false );"
+                "    private val myLongValue    = get( &quot;My Long Value's Name&quot;, 69L );"
+                "    private val myDoubleValue  = get( &quot;My Double Value's Name&quot, 4.20 );"
+                "    private val myStringValue  = get( &quot;My String Value's name&quot;, &quot;foobar&quot; );"
+                "}"
+                ""
+                "// configuration method signatures for KOpMode & KLinearOpMode"
+                "get( name: String, default: Boolean ): Boolean"
+                "get( name: String, default: Long ): Long"
+                "get( name: String, default: Double ): Double"
+                "get( name: String, default: String ): String"
+
+
+            p
+                "Only four types of variables can be configured: `boolean`s, `long`s, `double`s, and `String`s. And of course, these variables can be casted down to `int`s and `float`s, `long` and `double` were simply chosen as they are less restrictive. _Any number of these variables can exist for any KOpMode_ (or KLinearOpMode)! The only requirement for the variables is that they do not have conflicting names and types (i.e. you can't have a *boolean* named &quot;Garrett&quot; and a *string* named &quot;Garrett&quot;, as they are different types)."
+                p.note < "A great workaround for this is to use things that are roughly the synonyms, like &quot;My name is Hugh Mungus&quot; and &quot;Sexual Harassment&quot;"
+
+            h3 < "Great! Now how do I configure them?"
+            p
+                "Of course, configurable variables would be utterly useless if you couldn't *configure* them, so, naturally, there is a way to configure these variables. Now, the backend for this process is ugly (to say the least), but the front-end is very easy to use. In the top-right corner of the robot controller app's screen, there is a little robot icon, pay attention to this, as when it's blinking red, you can tap on it and open the OpMode and Profile Configuration tool."
+                
+            img.center
+                src: "/media/kftc/robot-icon.gif"
+                alt: "The blinking robot icon"
+                height: "75px"
+                style: "border: 1px solid black;"
+
+            p
+                "Once you've opened the configuration editor, the screens are fairly self-explanatory, but I should eventually get around to uploading screenshots for this."
+
+            p
+                "Additionally, when you start to run an OpMode, the name of the active profile for the OpMode will be displayed in brackets after its name, so its immediately visible what profile is running so mistakes can be quickly corrected if the profile needs to be switched."
+
+
+
+
 
 

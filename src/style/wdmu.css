@@ -1,6 +1,19 @@
 .wdmu.code
 {
 	font-family: "Courier New", monospace !important;
+	font-size: 14pt;
 	background-color: #dadada;
 	color: #5a5a5a;
+}
+
+.wdmu.bold
+{
+	font-size: inherit;
+	font-weight: bold;
+}
+
+.wdmu.italics
+{
+	font-size: inherit;
+	font-style: italic;
 }

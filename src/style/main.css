@@ -4,6 +4,8 @@ body { background: #f9f9f9; margin: 0px; padding: 0px; }
 
 h1, h2, h3, h4, h5, h6 { margin: 0px; padding: 0px; }
 
+.center { display: block; margin-left: auto; margin-right: auto; }
+
 /*
  * Various
  */
@@ -59,7 +61,8 @@ div.article
         {
             font-size: 12pt;
             color: rgba(0,0,0,0.54);
-            text-indent: 0;
+            text-indent: 0 !important;
+            margin-top: 0 !important;
         }
 
         p.desc
@@ -78,7 +81,6 @@ div.article
     div.article pre
     {
         margin: 0;
-        border: 1px solid black;
         margin: 25px 2% 0px 2%;
     }
 
