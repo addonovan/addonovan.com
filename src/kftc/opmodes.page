@@ -26,7 +26,7 @@ div.withSidebar
             p
                 "The moment any subclass of `KAbstractOpMode` is instantiated, it already possess a reference to the hardware map, controllers, and telemetry; the entire environment is completely initialized &mdash; ensured to be non-null."
 
-            pre < code.kotlin&noIndent
+            pre < code.kotlin
                 "@TeleOp( name = &quot;MyTeleOp&quot; )"
                 "class MyTeleOp : KOpMode()"
                 "{"
@@ -47,7 +47,7 @@ div.withSidebar
             p
                 "In kftc, there is an abstract class called `HardwareDefinition`, which provides convenience access to the hardware map and an improved method to get HardwareExtensions as well. To access the hardware definition inside the OpMode, simply create a blank companion object which inherits from it. Now, anything defined in the hardware definition file can be referenced directly, as if it were defined in the same class. This is different than having a separate field (which must be initialized manually during `init()`) where the name of the field must be written prior to the hardware device."
 
-            pre < code.kotlin&noIndent
+            pre < code.kotlin
                 "abstract class MyHardwareDefinition : HardwareDefinition()"
                 "{"
                 "    val motorLeft: DcMotor = get( &quot;motor_left&quot; );"
@@ -79,7 +79,7 @@ div.withSidebar
 
             h3 < "Okay, so how do I implement them?"
 
-            pre < code.kotlin&noIndent
+            pre < code.kotlin
                 "class MyOpMode : KOpMode()"
                 "{"
                 "    // If there is no configured value for the given name"
@@ -113,11 +113,50 @@ div.withSidebar
                 style: "border: 1px solid black;"
 
             p
-                "Once you've opened the configuration editor, the screens are fairly self-explanatory, but I should eventually get around to uploading screenshots for this."
+                "The following images are samples to show how to configure profiles for a KOpMode, after opening the configuration screen."
 
-            p
-                "Additionally, when you start to run an OpMode, the name of the active profile for the OpMode will be displayed in brackets after its name, so its immediately visible what profile is running so mistakes can be quickly corrected if the profile needs to be switched."
+            table
+                tr
+                    td < img.center
+                        src: "/media/kftc/config_1.png"
+                        alt: "KOpMode Overview"
+                        width: "95%"
 
+                    td < img.center
+                        src: "/media/kftc/config_2.png"
+                        alt: "Viewing profiles for a KOpMode"
+                        width: "95%"
+                    
+                    td < img.center
+                        src: "/media/kftc/config_3.png"
+                        alt: "Creating a new profile"
+                        width: "95%"
+
+                tr
+                    td < p.caption < "KOpMode Overview"
+                    td < p.caption < "Viewing profiles for a KOpMode"
+                    td < p.caption < "Creating a new profile"
+
+                tr
+                    td < img.center
+                        src: "/media/kftc/config_4.png"
+                        alt: "Viewing the new profile"
+                        width: "95%"
+
+                    td < img.center
+                        src: "/media/kftc/config_5.png"
+                        alt: "Selecting active profile"
+                        width: "95%"
+
+                    td < img.center
+                        src: "/media/kftc/config_6.png"
+                        alt: "Viewing the new profile"
+                        width: "95%"
+
+                tr
+                    td < p.caption < "Viewing the new profile"
+                    td < p.caption < "Selecting active profile"
+                    td < p.caption < "Viewing the new profile"
 
 
 

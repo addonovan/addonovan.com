@@ -10,7 +10,7 @@ div.withSidebar
             li
                 "Clone the repository to your disk"
 
-                pre < code.bash&noIndent
+                pre < code.bash
                     "$ git clone <destination> <your git file>"
                 
                 p.note
@@ -19,7 +19,7 @@ div.withSidebar
             li < "Develop in the TeamCode module"
             li
                 "Update kftc by using git"
-                pre < code.bash&noIndent
+                pre < code.bash
                     "$ git checkout -b update"
                     "$ git pull https://github.com/addonovan/kftc.git"
                     "  fix any possible merge conflicts"
