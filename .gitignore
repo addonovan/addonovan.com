@@ -1,2 +1,3 @@
 *.log
 .fuse_hidden*
+*.html
