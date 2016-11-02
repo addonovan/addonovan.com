@@ -1,6 +1,6 @@
 html, body { height: 100%; }
-* { font-size: 15pt; font-family: "Open Sans",sans-serif; color: rgba(0,0,0,0.70); }
-body { background: #f9f9f9; margin: 0px; padding: 0px; }
+* { font-size: 13pt; font-family: "Open Sans",sans-serif; color: rgba(0,0,0,0.70); }
+body { background: #e0f2f1; margin: 0px; padding: 0px; }
 
 h1, h2, h3, h4, h5, h6 { margin: 0px; padding: 0px; }
 
@@ -9,11 +9,6 @@ h1, h2, h3, h4, h5, h6 { margin: 0px; padding: 0px; }
 /*
  * Various
  */
-
-div.page
-{
-    margin: 40px 25% 40px 25%;
-}
 
 ul.nostyle
 {
@@ -26,6 +21,7 @@ ul.nostyle
 
 a
 {
+    font-size: 12.5pt;
     color: #00796B;
     text-decoration: none;
     font-weight: bold;
@@ -57,41 +53,49 @@ div.article
             margin-top: 20px;
         }
 
-        p.note
-        {
-            font-size: 12pt;
-            color: rgba(0,0,0,0.54);
-            text-indent: 0 !important;
-            margin-top: 0 !important;
-        }
-
-        p.caption
-        {
-            font-size: 11pt;
-            color: rgba(0,0,0,0.54);
-            text-indent: 0 !important;
-            margin-top: 0;
-            text-align: center !important;
-        }
-
-        p.desc
-        {
-            line-height: 1.75em;
-        }
-
-        p.footer
-        {
-            font-size: 10pt;
-            color: rgba(0,0,0,0.35);
-            text-align: center;
-            clear: both; /* ensure's it will be beneath any floating things */
-        }
-
     div.article pre
     {
         margin: 0;
         margin: 25px 2% 0px 2%;
     }
+
+p.note
+{
+    font-size: 12pt;
+    color: rgba(0,0,0,0.54);
+    text-indent: 0 !important;
+    margin-top: 0 !important;
+}
+
+p.caption
+{
+    font-size: 11pt;
+    color: rgba(0,0,0,0.54);
+    text-indent: 0 !important;
+    margin-top: 0;
+    text-align: center !important;
+}
+
+p.desc
+{
+    line-height: 1.75em;
+}
+
+p.footer
+{
+    font-size: 10pt;
+    color: rgba(0,0,0,0.35);
+    margin-left: 350px;
+    clear: both; /* ensure's it will be beneath any floating things */
+}
+
+h1.title
+{
+    font-size: 40pt;
+    margin-left: 317px;
+    padding-top: 0.50em;
+    padding-bottom: 0.60em;
+}
 
 /*
  * div.content styles
@@ -99,31 +103,45 @@ div.article
 
 h1, h2 { color: #bf0A30; }
 
-div.content h1
+div.content
 {
-    font-size: 40pt;
+    background: #fafafa;
+    padding: 15px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 1px 0px;
 }
 
-div.content h2,
-div.content h2 *
-{
-    font-size: 24pt;
-}
-
-div.content div.entry
-{
-    margin-top: 2%;
-    overflow-x: visible;
-    clear: both;
-}
-
-    div.content div.entry img
+    div.content h1
     {
-        float: left;
-        display: inline-block;
-        
-        width: 35%;
-        max-height: 100px;
-
-        margin: 25px;
+        font-size: 40pt;
     }
+
+    div.content h2,
+    div.content h2 *
+    {
+        font-size: 24pt;
+    }
+
+    div.content div.entry
+    {
+        margin-top: 2%;
+        overflow-x: visible;
+        clear: both;
+    }
+
+        div.content div.entry img
+        {
+            float: left;
+            display: inline-block;
+            
+            width: 35%;
+            max-height: 100px;
+
+            margin: 25px;
+        }
+
+div.content.noSidebar
+{
+    margin-left: 332px;
+    max-width: 850px;
+    width: 50%;
+}

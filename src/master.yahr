@@ -5,14 +5,22 @@ option(name: "condense")  < "true"
 defaults
     fragment(name: "main") < "frag/main.frag"
     fragment(name: "nav")  < "frag/nav.frag"
+    fragment(name: "related-posts") < "frag/related-posts.frag"
 
     css(name: "main") < "style/main.css"
     css(name: "nav")  < "style/nav.css"
+    css(name: "related-posts") < "style/related-posts.css"
     css(name: "code") < "style/code.css"
     css(name: "wdmu") < "style/wdmu.css"
 
     alias(name: "project") < ""
     alias(name: "title") < "Lorem Ipsum"
+    alias(name: "post-link") < ""
+
+
+
+:^)
+    "Top level Pages"
 
 
 page(path: "index.page")
@@ -23,32 +31,31 @@ page(path: "404.page")
 
 
 
-page(path: "kftc/index.page")
+:^)
+    "The KFTC section's pages"
+
+
+presets(name: "kftc")
     alias(name: "project") < "kftc"
     alias(name: "title") < "kftc"
+
+    alias(name: "related-posts") < "http://blog.addonovan.com/category/projects/kftc/"
+
     css(name: "sidebar") < "style/sidebar.css"
     fragment(name: "sidebar") < "frag/kftc-sidebar.frag"
+
+
+page(path: "kftc/index.page")
+    uses(name: "kftc")
 
 page(path: "kftc/getting-started.page")
-    alias(name: "project") < "kftc"
-    alias(name: "title") < "Getting Started"
-    css(name: "sidebar") < "style/sidebar.css"
-    fragment(name: "sidebar") < "frag/kftc-sidebar.frag"
+    uses(name: "kftc")
 
 page(path: "kftc/opmodes.page")
-    alias(name: "project") < "kftc"
-    alias(name: "title") < "OpModes"
-    css(name: "sidebar") < "style/sidebar.css"
-    fragment(name: "sidebar") < "frag/kftc-sidebar.frag"
+    uses(name: "kftc")
 
 page(path: "kftc/hardware-extensions.page")
-    alias(name: "project") < "kftc"
-    alias(name: "title") < "Hardware Extensions"
-    css(name: "sidebar") < "style/sidebar.css"
-    fragment(name: "sidebar") < "frag/kftc-sidebar.frag"
+    uses(name: "kftc")
 
 page(path: "kftc/tasks.page")
-    alias(name: "project") < "kftc"
-    alias(name: "title") < "Tasks"
-    css(name: "sidebar") < "style/sidebar.css"
-    fragment(name: "sidebar") < "frag/kftc-sidebar.frag"
+    uses(name: "kftc")

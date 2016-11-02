@@ -1,0 +1,1 @@
+div.relatedPosts < a( href: "#[related-posts]" ) <  "Related Posts"

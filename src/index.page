@@ -1,4 +1,4 @@
-div.content.page
+div.content.noSidebar
     div.entry
         h2 < a(href: "/kftc/index.html") < "kftc"
         p.desc < "An extension of FTC's official API."

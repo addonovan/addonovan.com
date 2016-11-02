@@ -1,7 +1,7 @@
 nav
 {
     background-color: #00796B;
-    padding-left: 5%;
+    padding-left: 80px;
     box-shadow: 0px 2px 5px rgba( 0, 0, 0, 0.2 );
     height: 2em;
 
@@ -26,7 +26,7 @@ nav
             nav > ul.nav > li.home
             {
                 height: 1.7em;
-                background: linear-gradient( 180deg, #171717, #2C2C2C, #171717 );    
+                background: linear-gradient( 180deg, #404040, #2C2C2C, #404040 );    
                 display: inline-block !important;
                 padding-left: 20px;
                 padding-right: 20px;

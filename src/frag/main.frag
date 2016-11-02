@@ -16,8 +16,7 @@ body
     #[frag nav]
 
     div
-        div.content.page
-            h1 < "#[title]"
+        h1.title < "#[title]"
 
         #[content]
 

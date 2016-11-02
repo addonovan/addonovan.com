@@ -2,8 +2,8 @@ div.withSidebar div#sidebar
 {
     float: left;
 
-    margin-left: 3%;
-    width: 19%;
+    margin-left: 36px;
+    width: 230px;
 }
 
     div.withSidebar div#sidebar h2
@@ -38,6 +38,7 @@ div.withSidebar div#main
 {
     float: left;
 
-    margin-left: 3%;
+    margin-left: 36px;
     width: 50%;
+    max-width: 850px;
 }

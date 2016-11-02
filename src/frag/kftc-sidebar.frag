@@ -1,4 +1,6 @@
-div#sidebar
+div#sidebar.content
+    #[frag related-posts]
+
     h2 < "Contents"
     ul
         li < a(href: "/kftc/index.html") < "Home"
