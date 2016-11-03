@@ -1,6 +1,6 @@
 html, body { height: 100%; }
 * { font-size: 13pt; font-family: "Open Sans",sans-serif; color: rgba(0,0,0,0.70); }
-body { background: #fafafa; margin: 0px; padding: 0px; }
+body { background: #efefef; margin: 0px; padding: 0px; }
 
 h1, h2, h3, h4, h5, h6 { margin: 0px; padding: 0px; }
 
@@ -105,7 +105,7 @@ h1, h2 { color: #bf0A30; }
 
 div.content
 {
-    background: #fffff;
+    background: #ffffff;
     padding: 15px;
     box-shadow: rgba(0, 0, 0, 0.30) 0px 0px 1.5px 0px;
 }
