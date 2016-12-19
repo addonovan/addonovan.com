@@ -56,17 +56,8 @@ presets(name: "kftc")
     css(name: "sidebar") < "style/sidebar.css"
     fragment(name: "sidebar") < "frag/kftc-sidebar.frag"
 
-page(path: "kftc/index.page")
-    uses(name: "kftc")
-
-page(path: "kftc/getting-started.page")
-    uses(name: "kftc")
-
-page(path: "kftc/opmodes.page")
-    uses(name: "kftc")
-
-page(path: "kftc/hardware-extensions.page")
-    uses(name: "kftc")
-
-page(path: "kftc/tasks.page")
-    uses(name: "kftc")
+page(path: "kftc/index.page") < uses(name: "kftc")
+page(path: "kftc/getting-started.page") < uses(name: "kftc")
+page(path: "kftc/opmodes.page") < uses(name: "kftc")
+page(path: "kftc/hardware-extensions.page") < uses(name: "kftc")
+page(path: "kftc/tasks.page") < uses(name: "kftc")
