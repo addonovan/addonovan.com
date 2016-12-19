@@ -8,6 +8,10 @@ div#sidebar.content
         li
             a(href: "/webdev/yahr.html") < "YAHR"
             ul
-                li < a(href: "/webdev/yahr.html#syntax") < "Syntax"
+                li < a(href: "/webdev/yahr.html#hierarchy") < "Hierarchy"
+                li < a(href: "/webdev/yahr.html#attributes") < "Attributes"
+                li < a(href: "/webdev/yahr.html#inlining") < "Inlining"
+                li < a(href: "/webdev/yahr.html#comments") < "Comments"
+
 
         

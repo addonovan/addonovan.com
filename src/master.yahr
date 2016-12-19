@@ -1,6 +1,6 @@
 option(name: "out-dir")   < "../"
 option(name: "embed-css") < "true"
-option(name: "condense")  < "true"
+option(name: "condense")  < "false"
 
 defaults
     fragment(name: "main") < "frag/main.frag"
