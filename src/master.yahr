@@ -6,6 +6,7 @@ defaults
     fragment(name: "main") < "frag/main.frag"
     fragment(name: "nav")  < "frag/nav.frag"
     fragment(name: "related-posts") < "frag/related-posts.frag"
+    fragment(name: "github-repo") < "frag/github-repo.frag"
 
     css(name: "main") < "style/main.css"
     css(name: "nav")  < "style/nav.css"
@@ -37,11 +38,13 @@ presets(name: "webdev")
     alias(name: "title") < "webdev"
 
     alias(name: "related-posts") < "http://blog.addonovan.com/category/projects/webdev"
+    alias(name: "github-repo") < "https://github.com/addonovan/webdev"
 
     css(name: "sidebar") < "style/sidebar.css"
     fragment(name: "sidebar") < "frag/webdev-sidebar.frag"
 
 page(path: "webdev/index.page") < uses(name: "webdev")
+page(path: "webdev/yahr.page") < uses(name: "webdev")
 
 :^)
     "The KFTC section's pages"

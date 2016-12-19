@@ -1,16 +1,13 @@
 div#sidebar.content
     #[frag related-posts]
+    #[frag github-repo]
 
     h2 < "Contents"
     ul
-        li < a(href: "/kftc/index.html") < "Home"
-        li < a(href: "/kftc/getting-started.html") < "Getting Started"
+        li < a(href: "/webdev/index.html") < "Home"
         li
-            a(href: "/kftc/opmodes.html" ) < "OpModes"
+            a(href: "/webdev/yahr.html") < "YAHR"
             ul
-                li < a(href: "/kftc/opmodes.html#lifecycle") < "Lifecycle"
-                li < a(href: "/kftc/opmodes.html#hardware") < "Hardware"
-                li < a(href: "/kftc/opmodes.html#configuration") < "Configuration"
+                li < a(href: "/webdev/yahr.html#syntax") < "Syntax"
 
-        li < a(href: "/kftc/hardware-extensions.html") < "Hardware Extensions"
-        li < a(href: "/kftc/tasks.html") < "Tasks"
+        
