@@ -29,7 +29,19 @@ page(path: "index.page")
 page(path: "404.page")
     alias(name: "title") < "404: File Not Found"
 
+:^)
+    "The webdev section"
 
+presets(name: "webdev")
+    alias(name: "project") < "webdev"
+    alias(name: "title") < "webdev"
+
+    alias(name: "related-posts") < "http://blog.addonovan.com/category/projects/webdev"
+
+    css(name: "sidebar") < "style/sidebar.css"
+    fragment(name: "sidebar") < "frag/webdev-sidebar.frag"
+
+page(path: "webdev/index.page") < uses(name: "webdev")
 
 :^)
     "The KFTC section's pages"
@@ -43,7 +55,6 @@ presets(name: "kftc")
 
     css(name: "sidebar") < "style/sidebar.css"
     fragment(name: "sidebar") < "frag/kftc-sidebar.frag"
-
 
 page(path: "kftc/index.page")
     uses(name: "kftc")
