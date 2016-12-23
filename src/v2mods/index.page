@@ -1,0 +1,6 @@
+div.withSidebar
+    #[frag sidebar]
+
+    div#main.content
+        p
+            "Victoria 2 mods I've made. I really like this game."

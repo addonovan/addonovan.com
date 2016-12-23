@@ -1,6 +1,6 @@
 option(name: "out-dir")   < "../"
 option(name: "embed-css") < "true"
-option(name: "condense")  < "false"
+option(name: "condense")  < "true"
 
 defaults
     fragment(name: "main") < "frag/main.frag"
@@ -30,8 +30,11 @@ page(path: "index.page")
 page(path: "404.page")
     alias(name: "title") < "404: File Not Found"
 
+
+
 :^)
     "The webdev section"
+
 
 presets(name: "webdev")
     alias(name: "project") < "webdev"
@@ -45,6 +48,24 @@ presets(name: "webdev")
 
 page(path: "webdev/index.page") < uses(name: "webdev")
 page(path: "webdev/yahr.page") < uses(name: "webdev")
+
+
+
+:^)
+    "Victoria 2 mods"
+
+presets(name: "v2mods")
+    alias(name: "project") < "Victoria 2 mods"
+    alias(name: "title") < "Victoria 2 mods"
+
+    alias(name: "related-posts") < "http://blog.addonovan.com/category/Victoria-2"
+    alias(name: "github-repo") < "https://github.com/addonovan/v2mods"
+
+    css(name: "sidebar") < "style/sidebar.css"
+    fragment(name: "sidebar") < "frag/v2mods-sidebar.frag"
+
+page(path: "v2mods/index.page") < uses(name: "v2mods")
+
 
 :^)
     "The KFTC section's pages"

@@ -6,6 +6,13 @@ div.withSidebar div#sidebar
     width: 230px;
 }
 
+    div.withSidebar div#sidebar a
+    {
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+
     div.withSidebar div#sidebar h2
     {
         font-size: 24px;
@@ -26,7 +33,6 @@ div.withSidebar div#sidebar
             div.withSidebar div#sidebar ul li a
             {
                 font-weight: normal;
-                text-decoration: none;
                 color: #004D40;
             }
 
