@@ -72,3 +72,24 @@ nav
     {
         text-decoration: none;
     }
+
+@media screen and ( max-width: 750px ) {
+
+    nav
+    {
+        height: 3em
+    }
+
+    nav > ul.links
+    {
+        height: 100%;
+        padding: 0;
+        padding-left: 5%;
+    }
+
+    nav > ul.projects
+    {
+        visibility: hidden;
+    }
+
+}
