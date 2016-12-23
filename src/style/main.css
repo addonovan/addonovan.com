@@ -171,4 +171,15 @@ div.content.noSidebar
         text-align: center;
     }
 
+    div.content,
+    div.content.noSidebar
+    {
+        margin: 2.5%;
+    }
+
+    div.content.noSidebar
+    {
+        width: 90%;
+    }
+
 }
