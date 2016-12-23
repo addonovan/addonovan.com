@@ -51,6 +51,7 @@ nav
     nav > ul.projects
     {
         padding-top: 0.4em;
+        overflow-y: hidden;        
     }
 
         nav > ul.projects li
@@ -66,3 +67,8 @@ nav
             }
 
             nav > ul.projects li a:hover { color: white; }
+
+    nav a
+    {
+        text-decoration: none;
+    }

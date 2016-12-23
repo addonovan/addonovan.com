@@ -22,17 +22,22 @@ ul.nostyle
 a
 {
     font-size: 12.5pt;
-    color: #00695C;
+    color: #bf0a30;
     transition: color 0.2s ease;
 
-    text-decoration: none;
-    font-weight: bold;
+    text-decoration: underline;
 }
 
 a:hover
 { 
-    color: #EF6C00;
+    color: #ed0d3d;
     transition: color 0.1s ease;
+}
+
+h2 a
+{
+    text-decoration: none;
+    font-weight: bold;
 }
 
 /*

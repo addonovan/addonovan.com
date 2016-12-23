@@ -26,6 +26,13 @@ div.withSidebar div#sidebar
             div.withSidebar div#sidebar ul li a
             {
                 font-weight: normal;
+                text-decoration: none;
+                color: #004D40;
+            }
+
+            div.withSidebar div#sidebar ul li a:hover
+            {
+                color: #00897B;
             }
 
             div.withSidebar div#sidebar ul li ul
