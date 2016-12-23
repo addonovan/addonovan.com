@@ -22,12 +22,18 @@ ul.nostyle
 a
 {
     font-size: 12.5pt;
-    color: #00796B;
+    color: #00695C;
+    transition: color 0.2s ease;
+
     text-decoration: none;
     font-weight: bold;
 }
 
-a:hover { color: #bf0a30; }
+a:hover
+{ 
+    color: #EF6C00;
+    transition: color 0.1s ease;
+}
 
 /*
  * articles
@@ -79,6 +85,7 @@ p.caption
 p.desc
 {
     line-height: 1.75em;
+    margin-top: 0;
 }
 
 p.footer
@@ -123,7 +130,7 @@ div.content
 
     div.content div.entry
     {
-        margin-top: 2%;
+        margin-bottom: 2%;
         overflow-x: visible;
         clear: both;
     }

@@ -1,15 +1,19 @@
 div.content.noSidebar
     div.entry
+        h2 < a(href: "/webdev/index.html") < "webdev"
+        p.desc < "A simple utility for making static webpages a lot less awful"
+
+    div.entry
+        h2 < a(href: "/victoria2/index.html") < "Victoria 2 Mods"
+        p.desc < "Mods for the game [Victoria 2](https://www.paradoxplaza.com/victoria-2-heart-of-darkness)"
+
+    div.entry
         h2 < a(href: "/kftc/index.html") < "kftc"
         p.desc < "An extension of FTC's official API."
 
     div.entry
         h2 < a(href: "viciv/index.html") < "viciv"
         p.desc < "A civilization game with concepts from Civilization V and Victoria II"
-
-    div.entry
-        h2 < a(href: "/webdev/index.html") < "webdev"
-        p.desc < "A simple utility for making static webpages a lot less awful"
 
     div.entry
         h2 < a(href: "gvengine.html") < "gvengine"
