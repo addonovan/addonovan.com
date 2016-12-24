@@ -9,4 +9,4 @@ div.withSidebar
         h2 < "Files"
         div.article
             ul
-                li < a(href: "CTR v1.zip") < "CTR v1"
+                li < a(href: "https://github.com/addonovan/v2mods/releases/download/ctr-v1.0/CTR.zip") < "CTR v1.0"
