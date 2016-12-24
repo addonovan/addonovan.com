@@ -11,4 +11,4 @@ div.withSidebar
                 li
                     "CTR/Correct The Record"
                     ul
-                        li < a(href: "downloads/CTR v1.zip") < "CTR v1"
+                        li < a(href: "https://github.com/addonovan/v2mods/releases/download/ctr-v1.0/CTR.zip") < "CTR v1.0"
