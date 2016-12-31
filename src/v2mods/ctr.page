@@ -6,7 +6,23 @@ div.withSidebar
             p
                 "It's very annoying to have to sit around for such extended periods of time, waiting for your infamy to run out, especially in multiplayer games. This mod addresses this by allowing the player (AIs excluded) to reduce his or her infamy by 15, by paying 14000&pound; (roughly the equivalent of 2 million USD today)."
 
-        h2 < "Files"
+        h2 < "Version History"
         div.article
             ul
-                li < a(href: "https://github.com/addonovan/v2mods/releases/download/ctr-v1.0/CTR.zip") < "CTR v1.0"
+                li
+                    a(href: "https://github.com/addonovan/v2mods/releases/download/ctr-v1.1/CTR.zip") < "CTR v1.1"
+                    p
+                        "Now the receiving country receives an event which allows them the following choices:"
+                        ul
+                            li < "Roll over and accept the 10 infamy (also reduces the relation between the sender and target by 100)"
+                            li
+                                "Attempt to dispute the negative press:"
+                                ul
+                                    li < "80% chance of the sender receiving a make-puppet casus belli against them"
+                                    li < "20% chance of reducing the country's infamy and increasing the sender's."
+
+
+                li
+                    a(href: "https://github.com/addonovan/v2mods/releases/download/ctr-v1.0/CTR.zip") < "CTR v1.0"
+                    p
+                        "The player is allowed to pay 14000&pound; to reduce his or her infamy by 15, while increasing a random country's by 10, by redirecting all the bad press with finger-pointing."
