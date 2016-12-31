@@ -9,6 +9,7 @@ div.withSidebar
         h2 < "Version History"
         div.article
             ul.spread
+
                 li
                     a(href: "https://github.com/addonovan/v2mods/releases/download/ctr-v1.2/CTR.zip") < "CTR v1.2"
                     p

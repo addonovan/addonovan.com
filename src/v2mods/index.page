@@ -3,12 +3,5 @@ div.withSidebar
 
     div#main.content
         div.entry
-            p < "Victoria 2 mods I've made. I really like this game."
-
-        div.entry
-            h2 < "Files"
-            ul
-                li
-                    "CTR/Correct The Record"
-                    ul
-                        li < a(href: "https://github.com/addonovan/v2mods/releases/download/ctr-v1.0/CTR.zip") < "CTR v1.0"
+            p < "Victoria 2 mods I've made."
+            p < "One day, this page may eventually get more content on it than these two sentences, but that day is not today."
