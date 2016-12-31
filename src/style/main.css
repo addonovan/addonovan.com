@@ -59,10 +59,30 @@ div.article
         margin-bottom: 0 !important;
     }
 
-        div.article p:not(:first-child)
-        {
-            margin-top: 20px;
-        }
+    div.article > p:not(:first-child)
+    {
+        margin-top: 20px;
+    }
+
+    div.article ul.spread > li
+    {
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;   
+        border-bottom: 1px solid #ccc;
+    }
+
+    div.article ul.spread > li:last-of-type
+    {
+        border-bottom: none;
+    }
+
+    div.article ul li p
+    {
+        text-indent: 0;
+        text-align: justify;
+        line-height: 1.2em;
+        margin: 0.5em;
+    }
 
     div.article pre
     {

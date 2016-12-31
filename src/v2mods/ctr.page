@@ -4,11 +4,35 @@ div.withSidebar
     div#main.content
         div.article
             p
-                "It's very annoying to have to sit around for such extended periods of time, waiting for your infamy to run out, especially in multiplayer games. This mod addresses this by allowing the player (AIs excluded) to reduce his or her infamy by 15, by paying 14000&pound; (roughly the equivalent of 2 million USD today)."
+                "It's very annoying to have to sit around for such extended periods of time, waiting for your infamy to run out, especially in multiplayer games. This mod addresses this by allowing the player (AIs excluded) to reduce his or her infamy in exchange for some money (and passing off that infamy onto another country)."
 
         h2 < "Version History"
         div.article
-            ul
+            ul.spread
+                li
+                    a(href: "https://github.com/addonovan/v2mods/releases/download/ctr-v1.2/CTR.zip") < "CTR v1.2"
+                    p
+                        "The amount a player is required to pay to reduce their infamy, and the amount of infamy lost, is now scaled with civilization progress."
+                        ul
+                            li
+                                "Great Power"
+                                ul
+                                    li < "Cost: 500,000&pound;"
+                                    li < "Infamy lost: 15"
+                                    li < "Countries affected: 3"
+                            li
+                                "Civilized (but not GP)"
+                                ul
+                                    li < "Cost: 75,000&pound;"
+                                    li < "Infamy lost: 5"
+                                    li < "Countries affected: 1"
+                            li
+                                "Uncivilized"
+                                ul
+                                    li < "Cost: 15,000&pound;"
+                                    li < "Infamy lost: 5"
+                                    li < "Countries affected: 1"
+
                 li
                     a(href: "https://github.com/addonovan/v2mods/releases/download/ctr-v1.1/CTR.zip") < "CTR v1.1"
                     p
