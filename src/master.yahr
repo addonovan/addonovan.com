@@ -55,8 +55,8 @@ page(path: "webdev/yahr.page") < uses(name: "webdev")
     "Victoria 2 mods"
 
 presets(name: "v2mods")
-    alias(name: "project") < "Victoria 2 mods"
-    alias(name: "title") < "Victoria 2 mods"
+    alias(name: "project") < "Victoria 2"
+    alias(name: "title") < "Victoria 2"
 
     alias(name: "related-posts") < "http://blog.addonovan.com/category/Victoria-2"
     alias(name: "github-repo") < "https://github.com/addonovan/v2mods"
@@ -67,6 +67,10 @@ presets(name: "v2mods")
     css(name: "downloads") < "style/downloads.css"
 
 page(path: "v2mods/index.page") < uses(name: "v2mods")
+page(path: "v2mods/v2checker.page")
+    uses(name: "v2mods")
+    alias(name: "title") < "v2checker"
+
 page(path: "v2mods/ctr.page")
     uses(name: "v2mods")
     alias(name: "title") < "Correct the Record"

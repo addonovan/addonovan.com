@@ -4,7 +4,7 @@ nav
         li < a(href: "/index.html") < "projects"
 
     ul.projects
-        li < a(href: "/v2mods/index.html") < "Victoria 2 Mods"
+        li < a(href: "/v2mods/index.html") < "Victoria 2"
         li < a(href: "/webdev/index.html") < "webdev"
         li < a(href: "/kftc/index.html") < "kftc"
         li < a(href: "/viciv/index.html") < "viciv"
