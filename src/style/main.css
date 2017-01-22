@@ -153,6 +153,12 @@ div.content
         font-size: 24pt;
     }
 
+    div.content h3,
+    div.content h3 *
+    {
+        font-size: 20pt;
+    }
+
     div.content div.entry
     {
         margin-bottom: 2%;
