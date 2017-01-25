@@ -1,7 +1,7 @@
 div.content.noSidebar
     div.entry
-        h2 < a(href: "/v2mods/index.html") < "Victoria 2"
-        p.desc < "Mods & Tools for the game [Victoria 2](https://www.paradoxplaza.com/victoria-2-heart-of-darkness)"
+        h2 < a(href: "/v2/index.html") < "Victoria 2"
+        p.desc < "Any projects related to my favorite game, [Victoria 2](https://www.paradoxplaza.com/victoria-2-heart-of-darkness)."
 
     div.entry
         h2 < a(href: "/webdev/index.html") < "webdev"

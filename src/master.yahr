@@ -52,28 +52,35 @@ page(path: "webdev/yahr.page") < uses(name: "webdev")
 
 
 :^)
-    "Victoria 2 mods"
+    "Victoria 2"
 
 presets(name: "v2mods")
     alias(name: "project") < "Victoria 2"
     alias(name: "title") < "Victoria 2"
 
     alias(name: "related-posts") < "http://blog.addonovan.com/category/Victoria-2"
-    alias(name: "github-repo") < "https://github.com/addonovan/v2mods"
+    alias(name: "github-repo") < "https://github.com/addonovan/v2ctr"
 
     css(name: "sidebar") < "style/sidebar.css"
-    fragment(name: "sidebar") < "frag/v2mods-sidebar.frag"
+    fragment(name: "sidebar") < "frag/v2-sidebar.frag"
 
     css(name: "downloads") < "style/downloads.css"
 
-page(path: "v2mods/index.page") < uses(name: "v2mods")
-page(path: "v2mods/v2checker.page")
+page(path: "v2/index.page") < uses(name: "v2mods")
+page(path: "v2/v2checker.page")
     uses(name: "v2mods")
     alias(name: "title") < "v2checker"
 
-page(path: "v2mods/ctr.page")
+:^)
+    "Correct The Record"
+
+page(path: "v2/ctr/index.page")
     uses(name: "v2mods")
-    alias(name: "title") < "Correct the Record"
+    alias(name: "title") < "Correct The Record"
+
+page(path: "v2/ctr/downloads.page")
+    uses(name: "v2mods")
+    alias(name: "title") < "CTR Downloads"
 
 
 :^)
