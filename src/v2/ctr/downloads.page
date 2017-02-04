@@ -15,7 +15,6 @@ div.withSidebar
                                 ul
                                     li < "be a great power"
                                     li < "be at war with XXX"
-                                    li < "have researched nationalism and imperialism"
                                     li < "not be partitioning another country"
                             li 
                                 "XXX must:"
@@ -23,6 +22,9 @@ div.withSidebar
                                     li < "be civilized"
                                     li < "control none of their non-colonial states"
                                     li < "have at least 80% war exhaustion"
+                    li < "You no longer have to control the state or colony to claim it in a partition"
+                    li < "Changes 'Declare a partition on the state of XXX' to 'Declare a partition on XXX'"
+                    li < "Declaring a parittion will multiply your prestige by 1.2"
 
             li
                 h3 < a(href: "https://github.com/addonovan/v2ctr/archive/v2.0.2.zip") < "CTR v2.0.2"

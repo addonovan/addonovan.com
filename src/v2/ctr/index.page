@@ -73,6 +73,7 @@ div.withSidebar
             p < "After taking the decision:"
             ul
                 li < "You will gain 10 infamy"
+                li < "You will gain 20% more prestige"
                 li < "You will receive the 'leading\_partition' flag"
                 li < "The country will receive the 'under\_partition' flag"
 
