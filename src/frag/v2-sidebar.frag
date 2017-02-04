@@ -4,7 +4,7 @@ div#sidebar.content
         li < a(href: "/v2/index.html") < "Home"
         li < a(href: "/v2/v2checker.html") < "v2checker"
         li 
-            a(href: "/v2/ctr.html") < "Correct The Record"
+            a(href: "/v2/ctr/index.html") < "Correct The Record"
             ul
                 li
                     a(href: "/v2/ctr/index.html") < "About"
