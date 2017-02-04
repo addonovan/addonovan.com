@@ -61,23 +61,18 @@ div.withSidebar
                 li < "Not an AI"
                 li < "At war with the specific country"
                 li
-                    "The country is:"
+                    "The country:"
                     ul  
-                        li < "A great power"
-                        li < "OR"
-                        li < "A secondary power, with at least 20 infamy"
-                    "And"
-                    ul
-                        li < "Controls none of their own territory"
+                        li < "Is Civilized"
+                        li < "Controls none of their non-colonial states"
                         li < "Has at least 80% war exhaustion"
 
                 li < "It is at least 1900"
-                li < "Have invented mass politics"
-                li < "Not already leading a partition"
+                li < "Have invented 'Nationalism And Imperialism'"
 
             p < "After taking the decision:"
             ul
-                li < "You will gain 5 infamy"
+                li < "You will gain 10 infamy"
                 li < "You will receive the 'leading\_partition' flag"
                 li < "The country will receive the 'under\_partition' flag"
 

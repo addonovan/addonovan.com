@@ -4,6 +4,27 @@ div.withSidebar
     div#main.content
         ul.spread.nostyle
             li
+                h3 < a(href: "https://github.com/addonvoan/v2ctr/archive/v2.1.0.zip") < "CTR v2.1.0"
+                div.entry < ul
+                    li
+                        "Updated Declaration of Partition requirements. To partition a country, XXX, the following requirements must be met:"
+                        ul
+                            li < "Must be at least 1900"
+                            li
+                                "We must:"
+                                ul
+                                    li < "be a great power"
+                                    li < "be at war with XXX"
+                                    li < "have researched nationalism and imperialism"
+                                    li < "not be partitioning another country"
+                            li 
+                                "XXX must:"
+                                ul
+                                    li < "be civilized"
+                                    li < "control none of their non-colonial states"
+                                    li < "have at least 80% war exhaustion"
+
+            li
                 h3 < a(href: "https://github.com/addonovan/v2ctr/archive/v2.0.2.zip") < "CTR v2.0.2"
                 div.entry < ul
                     li
