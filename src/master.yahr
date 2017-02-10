@@ -13,6 +13,7 @@ defaults
     css(name: "related-posts") < "style/related-posts.css"
     css(name: "code") < "style/code.css"
     css(name: "wdmu") < "style/wdmu.css"
+    css(name: "lists") < "style/lists.css"
 
     alias(name: "project") < ""
     alias(name: "title") < "Lorem Ipsum"
