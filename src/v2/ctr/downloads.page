@@ -8,6 +8,8 @@ div.withSidebar
                 li 
                     "Prussia can't return Neuch&acirc;tel to Switzerland if Switzerland don't real."
                     p.note < "This was a problem with HPM. Not really the author's fault, because *honestly* who would ever expect someone to play a game as Neuch&acirc;tel and have someone play France violate Swiss Neutrality so that you could conquest Switzerland. No one."
+                li
+                    "Neuchatel's (the country, not the province) name is now spelled Neuchâtel."
 
         div.article
             h3 < a(href: "https://github.com/addonovan/v2ctr/archive/v2.1.0.zip") < "CTR v2.1.0"
