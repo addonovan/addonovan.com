@@ -5,6 +5,10 @@ body { background: #efefef; margin: 0px; padding: 0px; }
 h1, h2, h3, h4, h5, h6 { margin: 0px; padding: 0px; }
 
 .center { display: block; margin-left: auto; margin-right: auto; }
+p.whyisyourscreensotiny
+{
+    display: none;
+}
 
 /*
  * Various
@@ -206,6 +210,20 @@ div.content.noSidebar
     div.content.noSidebar
     {
         width: 90%;
+    }
+
+}
+
+@media screen and ( max-width: 400px ) {
+
+    body > *
+    {
+        display: none !important;
+    }
+
+    p.whyisyourscreensotiny
+    {
+        display: block !important;
     }
 
 }

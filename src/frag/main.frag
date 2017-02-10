@@ -13,6 +13,8 @@ head
     script(src: "/highlighting/highlight.js")
 
 body
+    p.whyisyourscreensotiny < "Why is your screen so narrow, dear lord?"
+
     #[frag nav]
 
     div
