@@ -31,12 +31,12 @@ div.withSidebar
                     "4 random countries which"
                     ul
                         li < "Are not great powers"
-                        li < "Are not already targetted by a CTR campaign"
+                        li < "Are not already targeted by a CTR campaign"
                     "Will"
                     ul
                         li
-                            "Will received 'Targetted by CTR' modifier for 1 year"
-                        li < "Have event 'Targetted By CTR' (74000) informing them they were targetted."
+                            "Will received 'targeted by CTR' modifier for 1 year"
+                        li < "Have event 'targeted By CTR' (74000) informing them they were targeted."
 
             p < "The 'Correcting The Record' modifier performs the following:"
             ul
@@ -44,7 +44,7 @@ div.withSidebar
                 li < "Reduces casus belli generation speed by 5%"
                 li < "Reduces tax efficiency by 10%"
 
-            p < "The 'Targetted by CTR' modifier performs the following:"
+            p < "The 'targeted by CTR' modifier performs the following:"
             ul
                 li < "Adds 0.3 infamy per month"
 
