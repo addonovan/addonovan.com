@@ -13,3 +13,8 @@ div#sidebar.content
                         li < a(href: "/v2/ctr/index.html#partitioning") < "Partitioning"
 
                 li < a(href: "/v2/ctr/downloads.html") < "Downloads"
+        li
+            a(href: "/v2/bgs/index.html") < "Border Gore Simulator"
+            ul
+                li < a(href: "/v2/bgs/index.html") < "About"
+                li < a(href: "/v2/bgs/downloads.html") < "Downloads"

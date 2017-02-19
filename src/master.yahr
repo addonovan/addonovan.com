@@ -1,6 +1,7 @@
 option(name: "out-dir")   < "../"
 option(name: "embed-css") < "true"
 option(name: "condense")  < "true"
+option(name: "use-root") < "true"
 
 defaults
     fragment(name: "main") < "frag/main.frag"
@@ -82,6 +83,17 @@ page(path: "v2/ctr/index.page")
 page(path: "v2/ctr/downloads.page")
     uses(name: "v2mods")
     alias(name: "title") < "CTR Downloads"
+
+:^)
+    "Border Gore Simulator"
+
+page(path: "v2/bgs/index.page")
+    uses(name: "v2mods")
+    alias(name: "title") < "Border Gore Simulator"
+
+page(path: "v2/bgs/downloads.page")
+    uses(name: "v2mods")
+    alias(name: "title") < "BGS Downloads"
 
 
 :^)

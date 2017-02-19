@@ -1,0 +1,7 @@
+div.withSidebar
+    #[frag sidebar]
+
+    div#main.content
+        div.article
+            p < "Border Gore Simulator (BGS) was made to fix an issue with victoria 2: there weren't _enough_ shitty borders."
+            p < "This mod fixes that by relaxing the conditions that the AI must satisfy before they can use a casus belli, meaning that they can now go to war far more often, and acquire far more states, which will just look awful."
