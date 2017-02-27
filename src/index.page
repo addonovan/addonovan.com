@@ -11,10 +11,11 @@ div.content.noSidebar
         h2 < a(href: "/kftc/index.html") < "kftc"
         p.desc < "An extension of FTC's official API."
 
-    div.entry
-        h2 < a(href: "/viciv/index.html") < "viciv"
-        p.desc < "A civilization game with concepts from Civilization V and Victoria II"
+    :^)
+        div.entry
+            h2 < a(href: "/viciv/index.html") < "viciv"
+            p.desc < "A civilization game with concepts from Civilization V and Victoria II"
 
-    div.entry
-        h2 < a(href: "/gvengine/index.html") < "gvengine"
-        p.desc < "A generic voxel engine. Not capable of a whole lot, but fun to play with."
+        div.entry
+            h2 < a(href: "/gvengine/index.html") < "gvengine"
+            p.desc < "A generic voxel engine. Not capable of a whole lot, but fun to play with."
