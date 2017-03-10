@@ -3,6 +3,33 @@ div.withSidebar
 
     div#main.content
         div.article
+            h3 < a(href: "https://github.com/addonovan/v2ctr/archive/v2.1.2.zip") < "CTR v2.1.2"
+            div.entry < ul
+                li
+                    "Now Prussia *really* can't given Neuch&acirc;tel to Switzerland if Switzerland don't real"
+                li
+                    "Many countries now cannot be annex without their consent, if they are players"
+                    p.note < "Unless it's a player annexing them"
+                li
+                    "Neuch&acirc;tel can now remove the foreign cores on its territories, given the following conditions are true"
+                    ul
+                        li < "NCT is a secondary or great power"
+                        li < "NCT doesn't have the *eliminated\_foreign\_cores* flag"
+                        li < "NCT isn't a vassal"
+                    "Doing this will cause the following to happen:"
+                    ul
+                        li
+                            "Any nation with cores on province 608 (Neuch&acirc;tel) will:"
+                            ul
+                                li < "Gaim a Humilate CB on NCT for 4 months"
+                                li < "Lose 100 relation points with NCT"
+                        li
+                            "SWI, PRU, NGF, and GER lose their cores on province 608 (Neuch&acirc;tel)"
+                        li < "NCT will gain 25 prestige"
+                        li < "NCT will gain 1 infamy"
+                        li < "NCT will gain the *eliminated\_foreign\_cores* flag"
+
+        div.article
             h3 < a(href: "https://github.com/addonovan/v2ctr/archive/v2.1.1.zip") < "CTR v2.1.1"
             div.entry < ul
                 li 
