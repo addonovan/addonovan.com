@@ -3,7 +3,7 @@ div.withSidebar
 
     div#main.content
         div.article
-            h3 < a(href: "https://github.com/addonovan/v2ctr/archive/v2.1.2.zip") < "CTR v2.1.2"
+            h3 < a(href: "https://github.com/addonovan/v2ctr/releases/download/v2.1.2/CTR.zip") < "CTR v2.1.2"
             div.entry < ul
                 li
                     "Now Prussia *really* can't given Neuch&acirc;tel to Switzerland if Switzerland don't real"
