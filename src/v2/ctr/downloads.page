@@ -3,6 +3,25 @@ div.withSidebar
 
     div#main.content
         div.article
+            h3 < a(href: "https://github.com/addonovan/v2ctr/releases/download/v2.2.0/CTR.zip") < "CTR v2.2.0"
+            div.entry < ul
+                li
+                    "Created new decisions for releasing vassals"
+                    p.note < "These have all of the same requirements as before, however the countries created in HPM now have their own decisions. (e.g. Now the United Baltic Provinces can be depuppeted)."
+                li
+                    "Nerfed CTR decision:"
+                    ul
+                        li < "Lose 4 infamy after taking decision (unchanged)"
+                        li < "Lose 0.7 infamy/month"
+                        li < "No countries will receive 'targeted\_by\_ctr' modifier"
+                    "This is not permanent and will probably change in the next major update. The system needs to be reworked to have more of a balancing effect to it, while still accomplishing its original goal."
+                li
+                    "Partition State & Partition Colony casus bellis no longer give any prestige"
+                    p.note < "This was horribly broken and would like quintuple your prestige after annexing a country, depending on how many states it has"
+                    p.note < "Expect a nerf to this system as well in the future."
+                
+
+        div.article
             h3 < a(href: "https://github.com/addonovan/v2ctr/releases/download/v2.1.2/CTR.zip") < "CTR v2.1.2"
             div.entry < ul
                 li

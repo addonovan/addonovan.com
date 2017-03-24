@@ -1,0 +1,5 @@
+div.withSidebar
+    #[frag sidebar]
+
+    div#main.content
+        "Hello world!"
