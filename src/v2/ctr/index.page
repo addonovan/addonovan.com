@@ -24,31 +24,17 @@ div.withSidebar
             p < "Once these conditions are met, you will be allowed to take the decision, which will do the following:"
             ul
                 li < "Infamy -4"
-                li < "Lose 25,000&pound;"
+                li < "Lose 50,000&pound;"
                 li 
                     "You receive 'Correcting The Record' modifier for 1 year"
-                li
-                    "4 random countries which"
-                    ul
-                        li < "Are not great powers"
-                        li < "Are not already targeted by a CTR campaign"
-                    "Will"
-                    ul
-                        li
-                            "Will received 'targeted by CTR' modifier for 1 year"
-                        li < "Have event 'targeted By CTR' (74000) informing them they were targeted."
 
             p < "The 'Correcting The Record' modifier performs the following:"
             ul
-                li < "Removes 1.2 infamy per month"
+                li < "Removes 0.7 infamy per month"
                 li < "Reduces casus belli generation speed by 5%"
                 li < "Reduces tax efficiency by 10%"
 
-            p < "The 'targeted by CTR' modifier performs the following:"
-            ul
-                li < "Adds 0.3 infamy per month"
-
-            p < "So, in total, a country which runs a correct the record campaign will lose 18.4 more infamy than normal through the course of a year, which is essentially an entire conquest casus belli!"
+            p < "So, in total, a country which runs a correct the record campaign will lose 12.4 more infamy than normal through the course of a year, which is essentially an entire conquest casus belli!"
             p.note < "Yes, this means it's op, no, I probably won't nerf the immediate effects very much. I will, however, add in events which can increase tensions between those correcting the record and those not, or events which will have your campaign be detected."
 
         div.article
