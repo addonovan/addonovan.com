@@ -3,11 +3,72 @@ div.withSidebar
 
     div#main.content
         div.article
+            h3 < a(href: "https://github.com/addonovan/v2ctr/releases/download/v2.3.0/CTR.zip") < "CTR v2.3.0"
+            div.entry
+                h4 < "Partition System"
+                ul
+                    li < "Removed the partition decisions"
+                    li
+                        "Replaced with a new cb for fascist countries:" 
+                        ul
+                            li
+                                "For (at most) 10 infamy, you can conquest a country if:"
+                                ul
+                                    li < "It is civilized"
+                                    li < "It is not a great power"
+                                    li < "It has a border with one of your non-colonial provinces"
+                            li < "When it's added you will get event 78000 &quot;She will be Ours&quot;, which increases your jinogism"
+                            li
+                                "If the enemy accepts the wargoal, then"
+                                ul
+                                    li < "They will receive event 78001, &quot;Our Capitulation&quot;"
+                                    li 
+                                        "You will receive event 78002, &quot;The Colonial Question&quot;"
+                                        ul
+                                            li < "Release their colonies (creates independent nations from all their colonies)"
+                                        ul
+                                            li < "Take them for yourself"
+                                    li
+                                        "You will then receive event 78003, &quot;Our Demands Met&quot;"
+                                        ul
+                                            li < "Annex the other country"
+                                            li < "Gain 30 prestige"
+                            li
+                                "If you peace out without obtaining your wargoal, then"
+                                ul
+                                    li
+                                        "You will get event 78005, &quot;Our Failed Attempts&quot;"
+                                        ul
+                                            li < "All pops gain 5 militancy"
+                                            li < "All pops gain 5 consciousness"
+                                            li < "You receive the 'failed\_annexation' modifier for 5 years"
+
+                h4 < "Core Integration"
+                p.article
+                    "Core integration took an annoying long time to complete, (as I learned in a USA game where I owned Canada"
+                    "for 80+ years, and had the entire place majority Yankee for 60+ and only got roughly half of it cored.)."
+                    "So it's been buffed a little, as follows"
+                ul
+                    li < "Mean time to happen cut down from 15 years to 12"
+                    li < "Added a 200% modifier if the province is mostly a primary culture"
+
+                h4 < "Modifiers"
+                ul
+                    li
+                        "'failed\_annexation'"
+                        ul
+                            li < "+0.2 consciousness per month"
+                            li < "+0.3 militancy per month"
+                            li < "-80% mobilization size"
+
+        div.article
             h3 < a(href: "https://github.com/addonovan/v2ctr/releases/download/v2.2.0/CTR.zip") < "CTR v2.2.0"
             div.entry < ul
                 li
                     "Created new decisions for releasing vassals"
                     p.note < "These have all of the same requirements as before, however the countries created in HPM now have their own decisions. (e.g. Now the United Baltic Provinces can be depuppeted)."
+                li
+                    "Fixed issue where it would crash if HPM weren't installed as well. This will unfortunately mean that Victoria 2 will have to recalculate paths, quads, and all that fun stuff."
                 li
                     "Nerfed CTR decision:"
                     ul
