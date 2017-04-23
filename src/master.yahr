@@ -68,6 +68,32 @@ presets(name: "v2mods")
 
     css(name: "downloads") < "style/downloads.css"
 
+    :^)
+        "Abbreviations"
+
+    alias(name: "MTTH") < "<abbr title='Mean Time To Happen'>MTTH</abbr>"
+
+    :^)
+        "Country tags"
+
+    alias(name: "IBR") < "Iberia"
+    alias(name: "LEO") < "Leon"
+    alias(name: "ASR") < "Asir"
+    alias(name: "AIN") < "Ainu"
+    alias(name: "OCC") < "Occitania"
+    alias(name: "PAP") < "Papal States"
+
+    alias(name: "NCT") < "Neuch&acirc;tel"
+    alias(name: "PRU") < "Prussia"
+    alias(name: "NGF") < "North German Federation"
+    alias(name: "GER") < "Germany"
+    alias(name: "SWI") < "Switzerland"
+
+    :^)
+        "Province IDs"
+
+    alias(name: "PROV608") < "province #608 (Neuch&acirc;tel)"
+
 page(path: "v2/index.page") < uses(name: "v2mods")
 page(path: "v2/v2checker.page")
     uses(name: "v2mods")
