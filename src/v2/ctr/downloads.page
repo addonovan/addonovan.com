@@ -4,7 +4,9 @@ div.withSidebar
     div#main.content
         div.article
             a(id: "v2.4.0")
-            h3 < a(href: "https://github.com/addonovan/v2mods/releases/download/v2.4.0/CTR.zip") < "CTR v2.4.0"
+            h3
+                a(href: "https://github.com/addonovan/v2mods/releases/download/v2.4.0/CTR.zip") < "CTR v2.4.0"
+                "(ZXVI)"
             div.entry
                 h4 < "Incorporated the HPNNM mod"
                 ul
