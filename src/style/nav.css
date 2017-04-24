@@ -51,7 +51,8 @@ nav
     nav > ul.projects
     {
         padding-top: 0.4em;
-        overflow-y: hidden;        
+        overflow-y: hidden;
+        background-color: #00796B;
     }
 
         nav > ul.projects li
