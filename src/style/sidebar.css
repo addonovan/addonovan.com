@@ -23,8 +23,15 @@ div.withSidebar div#sidebar
         margin-top: 2px;
     }
 
+        div.withSidebar > div#sidebar > ul > li
+        {
+            padding-bottom: 8px !important;
+            border-bottom: 1px solid rgba( 55, 55, 55, 0.18);
+        }
+
         div.withSidebar div#sidebar ul li
         {
+            color: #bf0a30;
             list-style: none;
             margin-bottom: 2px;
         }

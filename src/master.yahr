@@ -46,7 +46,7 @@ presets(name: "webdev")
     alias(name: "github-repo") < "https://github.com/addonovan/webdev"
 
     css(name: "sidebar") < "style/sidebar.css"
-    fragment(name: "sidebar") < "frag/webdev-sidebar.frag"
+    fragment(name: "sidebar") < "frag/sidebar/webdev.frag"
 
 page(path: "webdev/index.page") < uses(name: "webdev")
 page(path: "webdev/yahr.page") < uses(name: "webdev")
@@ -64,7 +64,7 @@ presets(name: "v2mods")
     alias(name: "github-repo") < "https://github.com/addonovan/v2ctr"
 
     css(name: "sidebar") < "style/sidebar.css"
-    fragment(name: "sidebar") < "frag/v2-sidebar.frag"
+    fragment(name: "sidebar") < "frag/sidebar/v2.frag"
 
     css(name: "downloads") < "style/downloads.css"
 
@@ -94,8 +94,15 @@ presets(name: "v2mods")
 
     alias(name: "PROV608") < "province #608 (Neuch&acirc;tel)"
 
-page(path: "v2/index.page") < uses(name: "v2mods")
-page(path: "v2/v2checker.page")
+page
+    path: "v2/index.page"
+    name: "v2mods"
+    uses(name: "v2mods")
+
+page
+    path: "v2/v2checker.page"
+    name: "v2checker"
+
     uses(name: "v2mods")
     alias(name: "title") < "v2checker"
 
@@ -103,6 +110,9 @@ page(path: "v2/v2checker.page")
     "Correct The Record"
 
 page(path: "v2/ctr/index.page")
+    path: "v2/ctr/index.page"
+    name: "v2ctr"
+
     uses(name: "v2mods")
     alias(name: "title") < "Correct The Record"
 
@@ -133,7 +143,7 @@ presets(name: "kftc")
     alias(name: "related-posts") < "http://blog.addonovan.com/category/projects/kftc/"
 
     css(name: "sidebar") < "style/sidebar.css"
-    fragment(name: "sidebar") < "frag/kftc-sidebar.frag"
+    fragment(name: "sidebar") < "frag/sidebar/kftc.frag"
 
 page(path: "kftc/index.page") < uses(name: "kftc")
 page(path: "kftc/getting-started.page") < uses(name: "kftc")

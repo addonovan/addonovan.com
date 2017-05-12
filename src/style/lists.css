@@ -22,9 +22,3 @@ ul.noindent
 {
     padding-left: 0;
 }
-
-div#sidebar > ul > li
-{
-    padding-bottom: 8px !important;
-    border-bottom: 1px solid rgba( 55, 55, 55, 0.12);
-}
