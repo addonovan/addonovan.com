@@ -5,7 +5,7 @@ div.withSidebar
         div.article
             a(id: "v3.0.0")
             h3
-                a(href: "https://github.com/addonovan/v2ctr/releases/download/v3.0.0/CTR.zip") < "CTR v3.0.0"
+                a(href: "https://github.com/addonovan/v2ctr/releases/download/v3.0.0/CTRv3.zip") < "CTR v3.0.0"
                 "(FVTT)"
 
             div.entry
