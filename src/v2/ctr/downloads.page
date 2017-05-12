@@ -65,8 +65,8 @@ div.withSidebar
                     "In 1836:"
 
                     ul
-                        li < "Houston is renamed to [Columbia](https://en.wikipedia.org/wiki/West_Columbia,_Texas)"
-                        li < "Austin is called [Waterloo](https://en.wikipedia.org/wiki/Waterloo,_Texas) (2^{nd} point)"
+                        li < "Houston is renamed to [Columbia](https://en.wikipedia.org/wiki/West\_Columbia,\_Texas)"
+                        li < "Austin is called [Waterloo](https://en.wikipedia.org/wiki/Waterloo,\_Texas) (2^{nd} point)"
                         li < "Columbia is the capital of Texas"
 
                 p
