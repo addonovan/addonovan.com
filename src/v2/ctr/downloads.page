@@ -6,7 +6,7 @@ div.withSidebar
             a(id: "v3.0.0")
             h3
                 a(href: "https://github.com/addonovan/v2ctr/releases/download/v3.0.0/CTR.zip") < "CTR v3.0.0"
-                "(CHECKSUM)"
+                "(FVTT)"
 
             div.entry
                 h4 < "UI Changes"
@@ -111,7 +111,7 @@ div.withSidebar
                                 tr
                                     th < "Default"
                                     td < img(src: "/media/v2/ctr/LMK.png")
-                                    
+
                                     th < "Republic"
                                     td < img(src: "/media/v2/ctr/LMK_republic.png")
                                 tr
