@@ -30,8 +30,12 @@ ul.noindent
 table.flags
 {
     margin-left: 10%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
     padding-left: 5%;
     padding-right: 5%;
+    
     box-shadow: rgba(0, 0, 0, 0.45) 0px 0px 2px 0px inset;
     border: 1px solid rgba(0, 0, 0, 0.75);
 }
@@ -39,6 +43,11 @@ table.flags
     table.flags th
     {
         text-align: right;
+    }
+
+    table.flags tr
+    {
+        margin-bottom: 5px;
     }
 
     table.flags td img
