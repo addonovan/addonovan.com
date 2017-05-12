@@ -20,4 +20,4 @@ div#sidebar.content
                         li < a(href: "/v2/ctr/submods/bgs/index.html") < "About"
                         li < a(href: "/v2/ctr/submods/bgs/downloads.html") < "Downloads"
 
-                li < "Swisspocalypse"
+                :^) < li < "Swisspocalypse"

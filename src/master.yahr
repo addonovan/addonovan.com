@@ -1,7 +1,7 @@
 option(name: "out-dir")   < "../"
 option(name: "embed-css") < "true"
 option(name: "condense")  < "true"
-option(name: "use-root") < "true"
+option(name: "use-root") < "false"
 
 defaults
     fragment(name: "main") < "frag/main.frag"
@@ -89,22 +89,28 @@ presets(name: "v2mods")
     alias(name: "GER") < "Germany"
     alias(name: "SWI") < "Switzerland"
 
+    alias(name: "CSA") < "The CSA"
+    alias(name: "USA") < "The United States"
+
     :^)
         "Province IDs"
 
     alias(name: "PROV608") < "province #608 (Neuch&acirc;tel)"
 
-page
-    path: "v2/index.page"
-    name: "v2mods"
+page(path: "v2/index.page")
     uses(name: "v2mods")
 
-page
-    path: "v2/v2checker.page"
-    name: "v2checker"
-
+page(path: "v2/v2checker.page")
     uses(name: "v2mods")
     alias(name: "title") < "v2checker"
+
+page(path: "v2/ctr/submods/bgs/index.page")
+    uses(name: "v2mods")
+    alias(name: "title") < "Border Gore Simulator"
+
+page(path: "v2/ctr/submods/bgs/downloads.page")
+    uses(name: "v2mods")
+    alias(name: "title") < "BGS Downloads"
 
 :^)
     "Correct The Record"
