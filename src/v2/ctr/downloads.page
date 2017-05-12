@@ -106,12 +106,25 @@ div.withSidebar
                         
                         p
                             "Flags:"
-                            ul
-                                li < "[Default](INSERT LINK)"
-                                li < "[Republic](INSERT LINK)"
-                                li < "[Monarchy](INSERT LINK)"
-                                li < "[Communist](INSERT LINK)"
-                                li < "[Fascist](INSERT LINK)"
+
+                            table.flags
+                                tr
+                                    th < "Default"
+                                    td < img(src: "/media/v2/ctr/LMK.png")
+                                    
+                                    th < "Republic"
+                                    td < img(src: "/media/v2/ctr/LMK_republic.png")
+                                tr
+                                    th < "Monarchy"
+                                    td < img(src: "/media/v2/ctr/LMK_monarchy.png")
+
+                                    th < "Fascist"
+                                    td < img(src: "/media/v2/ctr/LMK_fascist.png")
+                                tr
+                                    th < "Communist"
+                                    td < img(src: "/media/v2/ctr/LMK_communist.png")
+
+                            
 
                     li < "Incorporated national foci from [HPM v0.3.6.1](https://pastebin.com/66gpxbKk)"
                     li < "Added assimilation national focus (+10% immigrant attraction, +15% assimilation rate)"
