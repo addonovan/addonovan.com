@@ -126,17 +126,6 @@ page(path: "v2/ctr/downloads.page")
     uses(name: "v2mods")
     alias(name: "title") < "CTR Downloads"
 
-:^)
-    "Border Gore Simulator"
-
-page(path: "v2/bgs/index.page")
-    uses(name: "v2mods")
-    alias(name: "title") < "Border Gore Simulator"
-
-page(path: "v2/bgs/downloads.page")
-    uses(name: "v2mods")
-    alias(name: "title") < "BGS Downloads"
-
 
 :^)
     "The KFTC section's pages"

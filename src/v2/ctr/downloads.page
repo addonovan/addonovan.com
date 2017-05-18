@@ -3,6 +3,45 @@ div.withSidebar
 
     div#main.content
         div.article
+            a(id: "v3.0.1")
+            h3
+                a(href: "https://github.com/addonovan/v2ctr/releases/download/v3.0.1/CTRv3.zip") < "CTR v3.0.1"
+                "(YAXN)"
+
+            div.entry
+                h4 < "UI Changes"
+
+                ul
+                    li < "No more 1px gap between the top of the secondary power frame and its flag in the lobby screen"
+                    li < "The foreign investment window doesn't look like trash"
+
+            div.entry
+                h4 < "American Taxation System"
+
+                ul
+                    li < "Max income tax changed from -45% to -40% (from ruling party's base)"
+                    li < "Decreased additional tariff limit from 75% down to 20%"
+                    li < "#[USA] can't endlessly pass the income tax decision"
+                    li < "If #[USA] becomes anything but a republic (or bourgeois dictatorship) then it will immeidately pass an income tax by event"
+                    li < "If #[USA] is a republic ruled by a reactionary party, then it will immediatley pass an income tax by event"
+                    li < "Anarcho-Liberal governments are forbidden from passing the Revenue Act or the Income Tax by decision"
+
+            div.entry
+                h4 < "Fixed excessive war exhaustion"
+
+                p
+                    "If you break the infamy limit somethin' fierce, you'll get the 'International Isolation' moidifer, and then in the infamy wars, you might also get the 'No more war' modifier. Together, these will make you gain 1.4 war exhaustion per month when at war, and when at peace, you'll still gain 0.4/month. This seems a bit broken, as it just makes your country into a dumpster fest that's impossible to recover from."
+
+                p
+                    "If you either (1) are at peace with or (2) allied with every great power (and all possible combinations of these two) and have both of these modifiers and are at peace, then you will get another modifier which will bring you down to (hopefully) losing at least 0.05 war exhaustion per month, which is actually manageable."
+
+            div.entry
+                h4 < "Fixed backwards compatibility with saves"
+
+                p
+                    "This will break compatibility with saves from the previous update; however, [here](https://github.com/addonovan/v2ctr/releases/download/v3.0.1/countries.txt) is a link to download a patch for this mod which will restore compatibility for CTRv3. Copy this file to 'mod/CTRv3/common/' and replace the pre-existing countries.txt there."
+
+        div.article
             a(id: "v3.0.0")
             h3
                 a(href: "https://github.com/addonovan/v2ctr/releases/download/v3.0.0/CTRv3.zip") < "CTR v3.0.0"
