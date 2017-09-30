@@ -118,9 +118,7 @@ class i32
     }
     else if ( value < 0 )
     {
-      var pos = new i32( -value );
-      pos.neg();
-      this.bits = pos.bits;
+      this.bits = new i32( -value ).neg().bits;
     }
     else
     {
@@ -244,9 +242,23 @@ class i32
     return "0x" + ( "00000000" + parseInt( this.bin().substring( 2 ), 2 ).toString( 16 ).toUpperCase() ).substr( -8 );
   }
 
-  dec()
+  dec( signed )
   {
-    return parseInt( this.bin().substring( 2 ), 2 );
+    if ( signed )
+    {
+      if ( this.bits[ 0 ] === 0 )
+      {
+        return this.dec( false );
+      }
+      else
+      {
+        return -( this.neg().dec( true ) ); 
+      }
+    }
+    else
+    {
+      return parseInt( this.bin().substring( 2 ), 2 );
+    }
   }
 }
 
