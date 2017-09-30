@@ -241,7 +241,7 @@ class i32
 
   hex()
   {
-    return "0x" + parseInt( this.bin().substring( 2 ), 2 ).toString( 16 ).toUpperCase();
+    return "0x" + ( "00000000" + parseInt( this.bin().substring( 2 ), 2 ).toString( 16 ).toUpperCase() ).substr( -8 );
   }
 
   dec()
