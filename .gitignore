@@ -2,3 +2,5 @@
 .fuse_hidden*
 *.html
 upload.jar
+*.swp
+*.swo
