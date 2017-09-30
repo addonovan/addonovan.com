@@ -65,6 +65,13 @@ Emulator.controls.step = function() {
   }
 
   fun( instruction.args );
+
+  if ( !Emulator.controls.running )
+  {
+    Emulator.hideLine();
+    return;
+  }
+
   Emulator.nextLine();
   Emulator.redraw();
 };

@@ -1,3 +1,13 @@
+div#controls > *
+{
+  margin-bottom: 1em;
+}
+
+div#controls > div#controlButtons
+{
+  display: flex;
+  justify-content: space-between;
+}
 
 div#tools
 {
@@ -7,6 +17,8 @@ div#tools
   left: 0;
   bottom: 0;
 
+  overflow-y: scroll;
+
   padding: 1em;
   border-right: 1px solid black;
 }
@@ -15,6 +27,11 @@ div#registers table th,
 div#registers table tr
 {
   width: 3em;
+}
+
+div#registers table th
+{
+  text-align: right;
 }
 
 ul { list-style: none; }

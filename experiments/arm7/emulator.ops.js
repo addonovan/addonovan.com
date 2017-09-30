@@ -11,22 +11,6 @@ if ( Emulator.utils === undefined )
   Emulator.utils = {};
 }
 
-Emulator.utils.parseLiteral = function( literal )
-{
-  switch ( literal.subtype )
-  {
-    case "decimal":
-      return parseInt( literal.val );
-
-    case "binary":
-      return parseInt( literal.val, 2 );
-    
-    case "hexadecimal":
-      return parseInt( literal.val, 16 );
-  }
-  return undefined;
-}
-
 Emulator.utils.bitCount = function( input, bitCount )
 {
   if ( bitCount === undefined ) bitCount = 32;
@@ -53,7 +37,7 @@ Emulator.utils.fail = function( msg )
 
 Emulator.ops.swi = function( args )
 {
-  if ( getRegister( 7 ) === 1 )
+  if ( Emulator.getRegister( 7 ).dec() === 1 )
   {
     Emulator.controls.running = false;
   }
@@ -82,7 +66,7 @@ Emulator.ops.mov = function( args )
   }
   else if ( args[ 1 ].type === "literal" )
   {
-    var val = Emulator.utils.parseLiteral( args[ 1 ] );
+    var val = i32.fromLiteral( args[ 1 ] );
     Emulator.setRegister( dst, val );
   }
   else
@@ -111,7 +95,7 @@ Emulator.ops.add = function( args )
     }
     else
     {
-      b = Emulator.utils.parseLiteral( args[ 1 ] );
+      b = i32.fromLiteral( args[ 1 ] );
     }
   }
   else
@@ -124,12 +108,11 @@ Emulator.ops.add = function( args )
     }
     else
     {
-      b = Emulator.utils.parseLiteral( args[ 2 ] );
+      b = i32.fromLiteral( args[ 2 ] );
     }
   }
 
-  console.log( "Setting " + dst + " to " + a + " + " + b + " = " + ( a + b ) );
-  Emulator.setRegister( dst, a + b );
+  Emulator.getRegister( dst ).copy( a.add( b ) );
 }
 
 //
@@ -152,27 +135,15 @@ Emulator.ops.cmp = function( args )
   }
   else if ( args[ 1 ].type === "literal" )
   {
-    b = Emulator.utils.parseLiteral( args[ 1 ] );
+    b = i32.fromLiteral( args[ 1 ] );
   }
 
-  var result = a - b;
-  var out = "";
-  out += result  <  0 ? 1 : 0; //  Negative
-  out += result === 0 ? 1 : 0; //  Zero
-  out +=                    0; //  Carry
-  out +=                    0; // oVerflow
-
-  for ( var i = 0; i < 28; i++ )
-  {
-    out += "0";
-  }
-
-  Emulator.setRegister( 15, parseInt( out ) );
+  a.sub( b, true );
 }
 
 Emulator.utils.getStatus = function()
 {
-  return this.bitCount( Emulator.getRegister( 15 ), 32 ).substring( 0, 4 );
+  return this.bitCount( Emulator.getRegister( 15 ).bin().substring( 2 ), 32 ).substring( 0, 4 );
 }
 
 Emulator.utils.lt = function() { return this.getStatus()[ 0 ] === "1"; }
