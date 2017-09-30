@@ -31,6 +31,16 @@ Emulator.utils.fail = function( msg )
   throw new Error( msg );
 }
 
+Emulator.utils.expect = function( arg, i, type, subtype )
+{
+
+}
+
+Emulator.utils.assert = function( msg, expected, actual )
+{
+  if ( expected !== actual ) Emulator.utils.fail( msg );
+}
+
 //
 // SWI
 //
@@ -74,6 +84,11 @@ Emulator.ops.mov = function( args )
     Emulator.utils.fail( "mov arg(1) expected literal or register identifier, found: " + args[ 1 ].type );
   }
 
+}
+
+Emulator.ops.mvn = function( args )
+{
+  if ( args.length !== 1 ) Emulator.utils.fail
 }
 
 //
