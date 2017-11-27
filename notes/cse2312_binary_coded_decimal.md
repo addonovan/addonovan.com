@@ -24,9 +24,9 @@ This is an example of how to do it in Kotlin.
 ```kotlin
 val input: String = ...
 var output = ArrayList< Byte >()
-for ( i in 0..input.lastIndex stepBy 2 )
+for ( i in 0..input.lastIndex step 2 )
 {
-  output += 
+  output +=
       ( input[ i ] - '0' ).shl( 4 ).toByte()
     + ( input[ i + 1 ] - '0' ).toByte()
 }
