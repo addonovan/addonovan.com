@@ -22,7 +22,7 @@ The basic process is:
 This is an example of how to do it in Kotlin.
 
 ```kotlin
-val input = "12345678"
+val input: String = ...
 var output = ArrayList< Byte >()
 for ( i in 0..input.lastIndex stepBy 2 )
 {
@@ -49,7 +49,7 @@ its sleeve.
 
 Kotlin sample:
 ```kotlin
-val input = ArrayList< Byte >()
+val input: ArrayList< Byte > = ...
 var output = ""
 for ( byte in input )
 {
