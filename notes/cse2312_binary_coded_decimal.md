@@ -27,7 +27,7 @@ var output = ArrayList< Byte >()
 for ( i in 0..input.lastIndex stepBy 2 )
 {
   output += 
-      ( input[ i ] - '0' ).toByte().shl( 4 )
+      ( input[ i ] - '0' ).shl( 4 ).toByte()
     + ( input[ i + 1 ] - '0' ).toByte()
 }
 ```
@@ -53,11 +53,11 @@ val input: ArrayList< Byte > = ...
 var output = ""
 for ( byte in input )
 {
-  val firstNibble = byte and 0xF0.toByte() shr 4
+  val firstNibble = ( byte.toInt() and 0xF0 ) shr 4
   val firstASCII = ( firstNibble + '0'.toByte() ).toChar()
   output += firstASCII
 
-  val secondNibble = byte and 0x0F.toByte()
+  val secondNibble = byte.toInt() and 0x0F
   val secondASCII = ( secondNibble + '0'.toByte() ).toChar()
   output += secondASCII
 }
