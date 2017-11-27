@@ -79,7 +79,6 @@ fun ArrayList< Char >.fromBCD(): String
 
   return output
 }
-}
 ```
 * `this` refers to the list of characters being decoded
 * `shr` is the right bitshift, `>>`
