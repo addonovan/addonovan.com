@@ -111,3 +111,9 @@ So the first two characters of our output are "24"
 
 So the entire value of this BCD is "2461"
 
+| Method        | Payload (hex) | Bytes used |
+| ------------- | ------------: | ---------- |
+| Binary Number |          9 9D | 1.5 (2)    |
+| ASCII String  |   32 34 36 31 | 4          |
+| BCD           |         24 61 | 2          |
+
