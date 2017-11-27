@@ -22,15 +22,27 @@ The basic process is:
 This is an example of how to do it in Kotlin.
 
 ```kotlin
-val input: String = ...
-var output = ArrayList< Byte >()
-for ( i in 0..input.lastIndex step 2 )
+fun String.toBCD(): ArrayList< Char >
 {
-  output +=
-      ( input[ i ] - '0' ).shl( 4 ).toByte()
-    + ( input[ i + 1 ] - '0' ).toByte()
+  val output = ArrayList< Char >()
+
+  for ( i in 0..this.lastIndex step 2 )
+  {
+    val firstASCII = this[ i ]
+    vla firstNumber = ( firstASCII - '0' ).toInt()
+    val firstNibble = firstASCII.shl( 4 )
+
+    val secondASCII = this[ i + 1 ]
+    val secondNumber = ( secondASCII - '0' ).toInt()
+    val secondNibble = secondNumber
+  
+    output += ( firstNibble + secondNibble )
+  }
+
+  return output
 }
 ```
+* `this` refers to the numeric string being encoded
 * `shl` is the left bitshift, `<<`
 * the addition could also be represented by `or`, the bitwise or, `|`
 
@@ -49,19 +61,27 @@ its sleeve.
 
 Kotlin sample:
 ```kotlin
-val input: ArrayList< Byte > = ...
-var output = ""
-for ( byte in input )
+fun ArrayList< Char >.fromBCD(): String
 {
-  val firstNibble = ( byte.toInt() and 0xF0 ) shr 4
-  val firstASCII = ( firstNibble + '0'.toByte() ).toChar()
-  output += firstASCII
+  var output = ""
+  for ( char in this )
+  {
+    val firstNibble = ( byte.toInt() and 0xF0 )
+    val firstNumber = firstNibble shr 4
+    val firstASCII  = ( firstNumber + '0'.toInt() ).toChar()
+    output += firstASCII
 
-  val secondNibble = byte.toInt() and 0x0F
-  val secondASCII = ( secondNibble + '0'.toByte() ).toChar()
-  output += secondASCII
+    val secondNibble = ( char.toInt() and 0x0F )
+    val secondNumber = secondNibble
+    val secondASCII  = ( secondNumber + '0'.toInt() ).toChar()
+    output += secondASCII
+  }
+
+  return output
+}
 }
 ```
+* `this` refers to the list of characters being decoded
 * `shr` is the right bitshift, `>>`
 * `and` is the bitwise and, `&`
 
