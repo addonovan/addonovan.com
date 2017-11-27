@@ -85,3 +85,29 @@ fun ArrayList< Char >.fromBCD(): String
 * `shr` is the right bitshift, `>>`
 * `and` is the bitwise and, `&`
 
+Example
+====
+
+Convert "$a" from a binary coded decimal to a numeric string.
+We'll use the hexadecimal values for characters because it separates their values into nibbles.
+
+**$**
+1. The ASCII value for `$` is 24 in hex (36 dec)
+2. To get the first nibble, we `&` it with `1111 0000` (bin) and get `0010 0000` (bin)
+3. Shift this right 4 places to get `0010` (bin)
+4. Add value of '0' to get ascii representation ('2')
+5. Take second nibble, we `&` it with `0000 1111` (bin) and get `0000 0100` (bin)
+6. Add value of '0' to get ascii representation ('4')
+
+So the first two characters of our output are "24"
+
+**a**
+1. the ASCII value for `a` is 61 (hex) (97 dec)
+2. To get the first nibble, we `&` it with `1111 0000` (bin) and get `0110 0000` (bin)
+3. `>> 4` to get `0110` (bin)
+4. `+ '0'` for `'6'`
+5. `& 0000 1111` (bin) and get `0000 0001` (bin)
+6. `+ '0'` for '`1'`
+
+So the entire value of this BCD is "2461"
+
