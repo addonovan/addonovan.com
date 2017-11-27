@@ -29,7 +29,7 @@ fun String.toBCD(): ArrayList< Char >
   for ( i in 0..this.lastIndex step 2 )
   {
     val firstASCII = this[ i ]
-    vla firstNumber = ( firstASCII - '0' ).toInt()
+    val firstNumber = ( firstASCII - '0' ).toInt()
     val firstNibble = firstASCII.shl( 4 )
 
     val secondASCII = this[ i + 1 ]
