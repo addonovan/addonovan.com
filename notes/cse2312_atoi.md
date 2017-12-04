@@ -10,7 +10,7 @@ obvious to someone who hasn't done it before, but it really isn't so bad.
 over?")
 
 1. Convert single digit characters
----
+====
 
 The simplest case would be a single digit, for instance a `char[]` of
 `['5', '\0']`.
@@ -27,7 +27,7 @@ This function works correctly for a single digit (note that it doesn't check if
 `input[0]` is even a digit).
 
 2. Converting 2 digits
----
+====
 
 To convert two digits at a time, we'll just assume that the string has at least
 two characters, at positions `input[0]` and `input[1]`, and both are digits.
@@ -57,7 +57,7 @@ complicated.
 
 
 3. Converting `n` digits
----
+====
 
 Now, let's try to convert the first `n` digits of a string to an integer. We'll
 make the assumption that the string has at least `n` digits in it.
@@ -136,7 +136,7 @@ int atoi( char* input, int n )
 ```
 
 4. Removing the `n` parameter
----
+====
 
 Now really, we don't need the `n` parameter telling us the length of the
 string if it's terminated by a known character (in this case `\0`, but it could
