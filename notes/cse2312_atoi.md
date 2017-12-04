@@ -9,7 +9,7 @@ obvious to someone who hasn't done it before, but it really isn't so bad.
 (Especially since this won't actually have any checking beyond "is this string
 over?")
 
-1. Convert single digit characters
+1 Convert single digit characters
 ====
 
 The simplest case would be a single digit, for instance a `char[]` of
@@ -26,7 +26,7 @@ int atoi( char* input )
 This function works correctly for a single digit (note that it doesn't check if
 `input[0]` is even a digit).
 
-2. Converting 2 digits
+2 Converting 2 digits
 ====
 
 To convert two digits at a time, we'll just assume that the string has at least
@@ -56,7 +56,7 @@ value, then we convert the second digit character and simply add it. Nothing too
 complicated.
 
 
-3. Converting `n` digits
+3 Converting `n` digits
 ====
 
 Now, let's try to convert the first `n` digits of a string to an integer. We'll
@@ -135,7 +135,7 @@ int atoi( char* input, int n )
 }
 ```
 
-4. Removing the `n` parameter
+4 Removing the `n` parameter
 ====
 
 Now really, we don't need the `n` parameter telling us the length of the
