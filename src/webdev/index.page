@@ -1,6 +1,0 @@
-div.withSidebar
-    #[frag sidebar]
-
-    div#main.content
-        p
-            "Webdev is a tool that makes writing static websites much easier. This is not intended for an actual website that needs any sort of dynamic elements on it. This is for people who like to design websites but hate the verbosity of working with disconnected webpages (i.e. me, for this website)."

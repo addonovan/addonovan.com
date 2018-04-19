@@ -1,0 +1,13 @@
+[package]
+name = "website"
+version = "0.1.0"
+authors = ["addonovan <austin@addonovan.com>"]
+
+[profile.dev]
+opt-level = 0
+
+[profile.release]
+opt-level = 3
+
+[dependencies]
+mwf = { git = "https://github.com/addonovan/mwf.git" }

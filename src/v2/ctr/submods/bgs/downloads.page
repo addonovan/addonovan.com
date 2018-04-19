@@ -1,8 +1,0 @@
-div.withSidebar
-    #[frag sidebar]
-
-    div#main.content
-        div.article
-            h3 < a(href: "https://github.com/addonovan/v2ctr/releases/download/bgs-v0.1/BGSv0.1.zip") < "BGS v0.1.0"
-            div.entry
-                "This is preliminary release of the mod. Almost nothing has been modified, other than relaxing the casus belli conditions for the AI."

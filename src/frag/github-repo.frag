@@ -1,1 +1,0 @@
-div.relatedPosts < a( href: "#[github-repo]" ) <  "Github"

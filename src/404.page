@@ -1,4 +1,0 @@
-div.content.noSidebar
-    p < "I can't find the file you're looking for!"
-    p < "This totally isn't my fault!"
-    p.note < "This is almost certainly my fault."
