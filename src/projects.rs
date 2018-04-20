@@ -35,21 +35,19 @@ impl RequestHandler for ProjectController
 {
     fn handle(&self, route_map: RouteMap) -> mwf::Result<View>
     {
-        let page = route_map.get(":page?");
+        let page = route_map.get(":page?")
+            .expect("Dude, how did this happen");
 
-        let file_path = match page {
+        let file_path: String;
+        if page.is_empty() {
+            file_path = "res/projects/index.md".into();
+        }
+        else {
+            let page = page.trim_right_matches(".html")
+                .trim_right_matches(".htm");
 
-            // default to the index page if there was none
-            None => "res/projects/index.md".into(),
-
-            Some(route) => {
-                // replace the .html from the URL with a .md
-                let route = route.trim_right_matches(".html")
-                    .trim_right_matches(".htm");
-
-                format!("res/projects/{}.md", route)
-            }
-        };
+            file_path = format!("res/projects/{}.md", page);
+        }
 
         View::file(file_path)
             .map(|view| view.apply(&self.md).apply(&self.format))
