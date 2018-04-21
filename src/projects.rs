@@ -1,6 +1,8 @@
 use mwf;
 use mwf::{RequestHandler, View, RouteMap, decorator};
 
+use config::CONFIG;
+
 pub struct ProjectController
 {
     md: decorator::Markdown,
@@ -49,7 +51,22 @@ impl RequestHandler for ProjectController
             file_path = format!("res/projects/{}.md", page);
         }
 
-        View::file(file_path)
-            .map(|view| view.apply(&self.md).apply(&self.format))
+        let content = View::file(file_path).map(|view| view.apply(&self.md));
+
+        // if we're in debug mode, then we'll never cache the contents of the
+        // format file, so we'll always re-read the format.html file
+        if CONFIG.debug {
+            use std::fs::File;
+            use std::io::Read;
+
+            let mut file = File::open("res/projects/format.html")?;
+            let mut contents = String::new();
+            file.read_to_string(&mut contents)?;
+
+            let dec = decorator::Surround::from(contents);
+            return content.map(|view| view.apply(&dec));
+        }
+
+        content.map(|view| view.apply(&self.format))
     }
 }
