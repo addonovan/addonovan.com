@@ -2,9 +2,11 @@ use mwf;
 use mwf::{RequestHandler, View, RouteMap, decorator};
 
 use config::CONFIG;
+use decs::Replacement;
 
 pub struct ProjectController
 {
+    replacement: Replacement,
     md: decorator::Markdown,
     format: decorator::Surround,
 }
@@ -27,6 +29,7 @@ impl ProjectController
         let format = decorator::Surround::from(format);
 
         ProjectController {
+            replacement: Replacement,
             md: decorator::Markdown,
             format,
         }
@@ -55,18 +58,24 @@ impl RequestHandler for ProjectController
 
         // if we're in debug mode, then we'll never cache the contents of the
         // format file, so we'll always re-read the format.html file
-        if CONFIG.debug {
-            use std::fs::File;
-            use std::io::Read;
+        let content = match CONFIG.debug {
+            true => {
+                use std::fs::File;
+                use std::io::Read;
 
-            let mut file = File::open("res/projects/format.html")?;
-            let mut contents = String::new();
-            file.read_to_string(&mut contents)?;
+                let mut file = File::open("res/projects/format.html")?;
+                let mut contents = String::new();
+                file.read_to_string(&mut contents)?;
 
-            let dec = decorator::Surround::from(contents);
-            return content.map(|view| view.apply(&dec));
-        }
+                let dec = decorator::Surround::from(contents);
+                content.map(|view| view.apply(&dec))
+            },
 
-        content.map(|view| view.apply(&self.format))
+            false => {
+                content.map(|view| view.apply(&self.format))
+            }
+        };
+
+        content.map(|view| view.apply(&self.replacement))
     }
 }
