@@ -54,7 +54,8 @@ impl RequestHandler for ProjectController
             file_path = format!("res/projects/{}.md", page);
         }
 
-        let content = View::file(file_path).map(|view| view.apply(&self.md));
+        let content = View::file(file_path)
+            .map(|view| view.apply(&self.replacement).apply(&self.md));
 
         // if we're in debug mode, then we'll never cache the contents of the
         // format file, so we'll always re-read the format.html file

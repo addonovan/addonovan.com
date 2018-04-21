@@ -6,8 +6,8 @@ fn replace_text(caps: &Captures) -> String
 {
     let input = &caps[1];
     match input {
-        "Dirs.Root" => "/res/".into(),
-        "Dirs.Projects" => "/res/projects/".into(),
+        "Dirs.Root" => "".into(),
+        "Dirs.Projects" => "/projects".into(),
 
         "Date" => {
             let local = Local::now();
@@ -50,6 +50,6 @@ mod test
     {
         let dec = Replacement;
         let view = View::raw("{{Dirs.Root}}").apply(&dec);
-        assert_eq!(view.content, "/res/");
+        assert_eq!(view.content, "");
     }
 }
