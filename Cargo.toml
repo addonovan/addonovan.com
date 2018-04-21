@@ -11,3 +11,6 @@ opt-level = 3
 
 [dependencies]
 mwf = { git = "https://github.com/addonovan/mwf.git" }
+regex = "0.2"
+lazy_static = "1.0"
+chrono = "0.4"
