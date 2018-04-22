@@ -21,8 +21,8 @@ fn replace_text(caps: &Captures) -> String
     }
 }
 
-pub struct Replacement;
-impl Decorator for Replacement
+pub struct Substitute;
+impl Decorator for Substitute
 {
     fn decorate(&self, mut view: View) -> View
     {
@@ -48,7 +48,7 @@ mod test
     #[test]
     fn replacement_replaces_dirs()
     {
-        let dec = Replacement;
+        let dec = Substitute;
         let view = View::raw("{{Dirs.Root}}").apply(&dec);
         assert_eq!(view.content, "");
     }

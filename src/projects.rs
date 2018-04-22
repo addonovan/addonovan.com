@@ -2,11 +2,11 @@ use mwf;
 use mwf::{RequestHandler, View, RouteMap, decorator};
 
 use config::CONFIG;
-use decs::Replacement;
+use decs::Substitute;
 
 pub struct ProjectController
 {
-    replacement: Replacement,
+    subst: Substitute,
     md: decorator::Markdown,
     format: decorator::Surround,
 }
@@ -29,7 +29,7 @@ impl ProjectController
         let format = decorator::Surround::from(format);
 
         ProjectController {
-            replacement: Replacement,
+            subst: Substitute,
             md: decorator::Markdown,
             format,
         }
@@ -40,22 +40,24 @@ impl RequestHandler for ProjectController
 {
     fn handle(&self, route_map: RouteMap) -> mwf::Result<View>
     {
-        let page = route_map.get(":page?")
+        use std::path::PathBuf;
+
+        // default the file name to "index" if it's empty
+        let file = route_map.get(":page?")
+            .map(|x| if x.is_empty() { "index" } else { x })
+            .map(|x| format!("res/projects/{}", x))
             .expect("Dude, how did this happen");
 
-        let file_path: String;
-        if page.is_empty() {
-            file_path = "res/projects/index.md".into();
-        }
-        else {
-            let page = page.trim_right_matches(".html")
-                .trim_right_matches(".htm");
-
-            file_path = format!("res/projects/{}.md", page);
+        // if the file has an extension, then we'll serve it directly
+        if let Some(_) = PathBuf::from(&file).extension() {
+            return View::file(file);
         }
 
-        let content = View::file(file_path)
-            .map(|view| view.apply(&self.replacement).apply(&self.md));
+        let file = format!("{}.md", file);
+
+        let content = View::file(file)?
+            .apply(&self.subst)
+            .apply(&self.md);
 
         // if we're in debug mode, then we'll never cache the contents of the
         // format file, so we'll always re-read the format.html file
@@ -69,14 +71,14 @@ impl RequestHandler for ProjectController
                 file.read_to_string(&mut contents)?;
 
                 let dec = decorator::Surround::from(contents);
-                content.map(|view| view.apply(&dec))
+                content.apply(&dec)
             },
 
             false => {
-                content.map(|view| view.apply(&self.format))
+                content.apply(&self.format)
             }
         };
 
-        content.map(|view| view.apply(&self.replacement))
+        Ok(content.apply(&self.subst))
     }
 }
