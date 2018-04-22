@@ -1,1 +1,82 @@
-h1 { color: green; }
+html, body {
+    height: 100%;
+}
+
+* {
+    font-family: "Open Sans", sans-serif;
+    color: rgba(0, 0, 0, 0.70);
+}
+
+p {
+    font-size: 12pt;
+}
+
+body {
+    background: #efefef;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3 {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 0.5em;
+}
+
+.separator {
+    border-bottom: 1px solid rgba( 55, 55, 55, 0.12 );
+}
+
+ul.nostyle {
+    list-style: none;
+}
+
+/******************************************************************************/
+/* LINKS                                                                      */
+/******************************************************************************/
+
+a {
+    color: #bf0a30;
+}
+
+a:hover {
+    color: #ed0d3d;
+    transition: color 0.1s ease;
+}
+
+/******************************************************************************/
+/* HEADERS                                                                    */
+/******************************************************************************/
+
+h1 { font-size: 24pt; }
+h2 { font-size: 20pt !important; }
+h3 { font-size: 16pt; }
+
+
+/******************************************************************************/
+/* BODY                                                                       */
+/******************************************************************************/
+
+article {
+    background: #fafafa;
+    padding: 15px;
+    box-shadow: rgba(0, 0, 0, 0.30) 0 0 1.5px 0;
+    width: 50%;
+    
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/******************************************************************************/
+/* FOOTERS                                                                    */
+/******************************************************************************/
+
+footer {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-size: 10pt;
+    color: rgba(0, 0, 0, 0.35);
+    clear: both;
+}
