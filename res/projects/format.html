@@ -11,9 +11,31 @@
     <h1>Austin Donovan</h1>
 </header>
 
-<article>
-    {{middle}}
-</article>
+<div id="BodyContents">
+    <aside>
+        @if sidebar {
+        <h3></h3>
+        <ul>
+            @foreach it in sidebar {
+            <li><a href="${it.link}">${it.content}</a></li>
+            }
+        </ul>
+        <hr/>
+        }
+        <h3>Projects</h3>
+        <ul>
+            <li>mwf</li>
+            <li>gvengine</li>
+            <li>Victoria 2</li>
+            <li>arm7.js</li>
+            <li>webdev</li>
+            <li>kftc</li>
+        </ul>
+    </aside>
+    <article>
+        {{middle}}
+    </article>
+</div>
 
 <footer>
     Copyright &copy; {{Date.Year}} Austin Donovan
