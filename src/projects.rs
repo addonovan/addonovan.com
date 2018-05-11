@@ -2,13 +2,14 @@ use mwf;
 use mwf::{RequestHandler, View, RouteMap, decorator};
 
 use config::CONFIG;
-use decs::Substitute;
+use decs::{Processor, Substitute};
 
 pub struct ProjectController
 {
     subst: Substitute,
     md: decorator::Markdown,
     format: decorator::Surround,
+    processor: Processor,
 }
 
 impl ProjectController
@@ -32,6 +33,7 @@ impl ProjectController
             subst: Substitute,
             md: decorator::Markdown,
             format,
+            processor: Processor::new(),
         }
     }
 }
@@ -79,6 +81,6 @@ impl RequestHandler for ProjectController
             }
         };
 
-        Ok(content.apply(&self.subst))
+        Ok(content.apply(&self.subst).apply(&self.processor))
     }
 }

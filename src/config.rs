@@ -8,7 +8,7 @@ pub struct Configuration
 #[cfg(debug_assertions)]
 pub const CONFIG: Configuration = Configuration {
     address: "127.0.0.1:8080",
-    debug: true
+    debug: true,
 };
 
 #[cfg(not(debug_assertions))]
