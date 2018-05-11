@@ -7,6 +7,7 @@ use decs::Processor;
 pub struct ServiceController
 {
     processor: Processor,
+    services: Vec<&'static str>,
 }
 
 impl ServiceController
@@ -15,6 +16,7 @@ impl ServiceController
     {
         ServiceController {
             processor: Processor::new(),
+            services: vec!["website", "factorio", "minecraft"],
         }
     }
 
@@ -55,13 +57,13 @@ impl RequestHandler for ServiceController
 {
     fn handle(&self, route_map: RouteMap) -> mwf::Result<View>
     {
-        let out = format!(
-            "website = {}\nsshd = {}\nping = {}", 
-            self.status("website"),
-            self.status("ssh"),
-            self.status("ping"),
-        );
-        Ok(View::raw(out))
+        let output = self.services
+            .iter()
+            .map(|it| format!("{} = {}", it, self.status(it)))
+            .collect::<Vec<String>>()
+            .join("\n");
+
+        Ok(View::raw(output))
     }
 }
 
