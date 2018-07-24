@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <table>
+        <tr>
+            <th>Service</th>
+            <th>Status</th>
+        </tr>
+        <tr>
+            <td>Minecraft</td>
+            <td>
+                <span th:switch="${minecraft}">
+                    <span th:case="${true}">Running</span>
+                    <span th:case="${false}">Not Running</span>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td>Factorio</td>
+            <td>
+                <span th:switch="${factorio}">
+                    <span th:case="${true}">Running</span>
+                    <span th:case="${false}">Not Running</span>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td>Website</td>
+            <td>
+                <span th:switch="${website}">
+                    <span th:case="${true}">Running</span>
+                    <span th:case="${false}">Not Running</span>
+                </span>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

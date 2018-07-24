@@ -12,9 +12,16 @@ class GreetingController {
     fun greeting(
             @RequestParam("name") name: String,
             model: Model
-    ): String {
+    ) {
         model.addAttribute("name", name)
-        return "greeting"
+    }
+
+    @GetMapping("/")
+    fun index(model: Model): String {
+        model.addAttribute("minecraft", Services.minecraft)
+        model.addAttribute("factorio", Services.factorio)
+        model.addAttribute("website", Services.website)
+        return "index"
     }
 
 }
