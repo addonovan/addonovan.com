@@ -34,7 +34,11 @@ dependencies {
     compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     compile("org.jetbrains.kotlin:kotlin-reflect")
     compile("org.springframework.boot:spring-boot-starter-web")
-    compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+
+    compile group: 'io.pebbletemplates',
+            name: 'pebble-spring-boot-2-starter',
+            version: '3.0.0'
+
     compile("org.springframework.boot:spring-boot-devtools")
 
     testCompile("junit:junit")

@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <table>
+        <tr>
+            <th>Service</th>
+            <th>Status</th>
+        </tr>
+        <tr>
+            <td>Minecraft</td>
+            <td>
+                {% if minecraft == true %}
+                    Running
+                {% else %}
+                    Not Running
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <td>Factorio</td>
+            <td>
+                {% if factorio == true %}
+                    Running
+                {% else %}
+                    Not Running
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <td>Website</td>
+            <td>
+                {% if website == true %}
+                    Running
+                {% else %}
+                    Not Running
+                {% endif %}
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
