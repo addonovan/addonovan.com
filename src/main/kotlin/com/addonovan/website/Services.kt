@@ -1,17 +1,15 @@
 package com.addonovan.website
 
-import jdk.nashorn.internal.objects.NativeRegExp.exec
-import java.io.InputStream
 import java.util.concurrent.TimeUnit
 
-private fun serviceRunning(name: String) = Unit.let {
-    val proc = ProcessBuilder(*arrayOf("./service.sh", name))
+private fun serviceRunning(name: String, timeout: Boolean) = Unit.let {
+    val proc = ProcessBuilder("./service.sh", name)
             .redirectOutput(ProcessBuilder.Redirect.PIPE)
             .redirectError(ProcessBuilder.Redirect.PIPE)
             .start()
 
-    if (!proc.waitFor(25, TimeUnit.MILLISECONDS)) {
-        throw RuntimeException("Process timeout")
+    if (!proc.waitFor(100, TimeUnit.MILLISECONDS)) {
+        return timeout
     }
 
     proc.inputStream.bufferedReader().readText().isNotBlank()
@@ -19,10 +17,20 @@ private fun serviceRunning(name: String) = Unit.let {
 
 object Services {
 
-    val minecraft = serviceRunning("minecraft")
+    private var _minecraft = false
 
-    val factorio = serviceRunning("factorio")
+    val minecraft: Boolean
+        get() {
+            _minecraft = serviceRunning("minecraft", _minecraft)
+            return _minecraft
+        }
 
-    val website = serviceRunning("website")
+    private var _factorio = false
+
+    val factorio: Boolean
+        get() {
+            _factorio = serviceRunning("factorio", _factorio)
+            return _factorio
+        }
 
 }
