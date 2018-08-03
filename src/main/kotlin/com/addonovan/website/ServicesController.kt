@@ -1,27 +1,29 @@
+@file:Suppress("UNUSED")
+
 package com.addonovan.website
 
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.RequestParam
+import org.springframework.web.bind.annotation.RequestMapping
 
 @Controller
-class GreetingController {
+@RequestMapping("services")
+class ServicesController {
 
-    @GetMapping("/greeting")
-    fun greeting(
-            @RequestParam("name") name: String,
-            model: Model
-    ) {
-        model.addAttribute("name", name)
+    @GetMapping("")
+    fun index(model: Model): String {
+        // get the status of all of the services
+        status(model)
+
+        return "services/index"
     }
 
-    @GetMapping("/")
-    fun index(model: Model): String {
+    @GetMapping("status")
+    fun status(model: Model) {
         model.addAttribute("minecraft", Services.minecraft)
         model.addAttribute("factorio", Services.factorio)
         model.addAttribute("website", Services.website)
-        return "index"
     }
 
 }

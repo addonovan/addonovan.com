@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            {% block title %}{% endblock %}
+        </title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <style>
+            {% autoescape false %}
+            {{style}}
+            {% endautoescape %}
+        </style>
+    </head>
+
+    <body>
+
+    <nav>
+        <ul>
+            <li><a href="/">Austin Donovan</a></li>
+            <li><a href="/projects">Projects</a></li>
+        </ul>
+    </nav>
+
+    <div id="content">
+        {% autoescape false %}
+        {{content}}
+        {% endautoescape %}
+    </div>
+
+    <footer>
+        Copyright &copy; 2018- Austin Donovan. All Rights Reserved.
+    </footer>
+
+    </body>
+
+</html>
