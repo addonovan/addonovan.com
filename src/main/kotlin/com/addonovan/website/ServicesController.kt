@@ -23,7 +23,6 @@ class ServicesController {
     fun status(model: Model) {
         model.addAttribute("minecraft", Services.minecraft)
         model.addAttribute("factorio", Services.factorio)
-        model.addAttribute("website", Services.website)
     }
 
 }
