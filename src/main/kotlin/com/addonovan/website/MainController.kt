@@ -22,6 +22,8 @@ class MainController {
             request: HttpServletRequest,
             model: Model
     ): String {
+
+        // determine the requested file by the URL
         val file = (request.getAttribute(PATH_ATTR) as String).let {
             val file = it.trimStart('/')
 
@@ -32,6 +34,7 @@ class MainController {
             }
         }
 
+        // fill the model with our files from cache
         model["style"] = FileCache["style.css"]
         model["content"] = try {
             FileCache[file]
@@ -40,6 +43,7 @@ class MainController {
             FileCache["404.html"]
         }
 
+        // the template we'll be using
         return "format"
     }
 
