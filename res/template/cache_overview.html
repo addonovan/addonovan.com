@@ -1,0 +1,20 @@
+<p>
+    <b>Total cache size:</b>
+    <code>{{total_size}} bytes</code>
+</p>
+<table id="cache">
+    <tr>
+        <th>Name</th>
+        <th>Size (B)</th>
+        <th>Last Modified</th>
+        <th>Time Loaded</th>
+    </tr>
+    {{#each entries as |entry| ~}}
+        <tr>
+            <td><code>{{entry.file}}</code></td>
+            <td><code>{{entry.size}}</code></td>
+            <td><code>{{entry.modified_time}}</code></td>
+            <td><code>{{entry.load_time}}</code></td>
+        </tr>
+    {{/each}}
+</table>

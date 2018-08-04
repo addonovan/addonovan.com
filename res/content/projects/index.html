@@ -1,0 +1,152 @@
+<section>
+    <header><h1>Selected Projects</h1></header>
+    <hr/>
+
+    <!--<article>-->
+        <!--<h3>Freevicky</h3>-->
+        <!--<p class="info">Language: <span class="item">C++</span></p>-->
+        <!--<p>TBA</p>-->
+    <!--</article>-->
+
+    <article>
+        <h3>arm7.js</h3>
+        <p class="info">
+            <span class="meta item">
+                <a class="github" href="https://github.com/addonovan/arm7.js"></a>
+            </span>
+            <span class="meta">Language</span>
+            <span class="item">JavaScript</span>
+        </p>
+        <p>
+            A (limited) Arm7 interpreter written in JavaScript. This can
+            simulate some basic instructions and display how the 32-bit
+            registers act during the program execution, all while showing the
+            current line being executed.
+        </p>
+        <p>
+            The Arm7 assembly is parsed before it is interpreted, by using a
+            parser generated from a <code>PEG.js</code> grammar.
+        </p>
+    </article>
+
+    <article>
+        <h3>FAT32 Image Reader</h3>
+        <p class="info">
+            <span class="meta item">
+                <a class="github" href="https://github.com/addonovan/fat32"></a>
+            </span>
+            <span class="meta">Language</span>
+            <span class="item">C</span>
+        </p>
+        <p>
+            This was a school assignment for my undergraduate Operating Systems
+            class in Spring 2018. The program will mount a FAT32 file system
+            image and drops you into an interactive command-line shell which
+            will let you interact with the file system (reads only).
+        </p>
+        <p>
+            The assignment comes with an implementation of a custom memory
+            allocator which tracks when blocks are allocated and freed when in
+            debug mode.
+        </p>
+        <p>
+            To make sure each part of the program was working correctly, I wrote
+            a unit testing system along with the program and practiced
+            test-driven development for this project. The unit testing framework
+            is pretty nice to use, and will run all unit tests under a separate
+            process with a <code>SIGSEGV</code> handler attached to catch
+            segfaults. Shared memory is also employed to keep track of the total
+            number of assertions (and failures) throughout the program.
+        </p>
+    </article>
+
+    <article>
+        <h3>&Uuml;berkasino</h3>
+        <p class="info">
+            <span class="meta item">
+                <a class="github" href="https://github.com/addonovan/ueberkasino"></a>
+            </span>
+            <span class="meta">Language</span>
+            <span class="item">C++11</span>
+            <span class="meta">Technologies</span>
+            <span class="item"><abbr title="oh god, it was awful">FLTK</abbr></span>
+            <span class="item">OpenSplice DDS</span>
+        </p>
+        <p>
+            This was a school assignment for my undergraduate Software
+            Engineering course in Spring 2018. We were tasked with specifying,
+            writing, and testing a networked game of Blackjack which uses the
+            <abbr title="Godforsaken C-with-classes library with awful docs">FLTK</abbr>
+            library for the GUI and OpenSplice DDS for networked communication,
+            both prescribed by the professor.
+        </p>
+        <p>
+            The class was split into groups which either implemented the player
+            or dealer parts of the program, which were required to communicate
+            with eachother over the OpenSplice network. So this required a
+            program which worked along with any of the other teams', without
+            any direct communication between the teams.
+        </p>
+        <p>
+            And, <abbr title="except I totally am">not the brag or anything</abbr>,
+            but the professor said it was the
+            <a href="/raw/projects/not_bragging.png">"best project code in years."</a>
+        </p>
+    </article>
+
+</section>
+
+<section>
+    <h1>Other Projects</h1>
+    <hr/>
+
+    <article>
+        <h3>School Assignments</h3>
+        <p class="info">
+            <span class="meta item">
+                <a class="github" href="https://github.com/addonovan/school"></a>
+            </span>
+            <span class="meta">Languages</span>
+            <span class="item">C</span>
+            <span class="item">Arm7 Assembly</span>
+        </p>
+        <p>
+            This is just a collection of other, smaller school projects which
+            didn't really warrant their own repositories or mentions. There are
+            some interesting assignments, as well as links to all other school
+            projects which <i>were</i> interesting enough to have their own
+            respositories.
+        </p>
+        <p>
+            While the top-level repository doesn't contain any
+            <code>README</code> information, each folder has information about
+            the course, and each of the projects within it.
+        </p>
+    </article>
+
+    <article>
+        <h3>Mav Shell</h3>
+        <p class="info">
+            <span class="meta item">
+                <a class="github" href="https://github.com/addonovan/msh"></a>
+            </span>
+            <span class="meta">Language</span>
+            <span class="item">C</span>
+        </p>
+        <p>
+            This was a school assignment for my undergraduate Operatin Systems
+            class in Spring 2018. The program is a simple UNIX-style shell, like
+            <code>sh</code>.
+
+            The program comes with following built-in commands:
+        </p>
+        <ul>
+            <li><code>cd</code></li>
+            <li><code>pwd</code> prints working directory</li>
+            <li><code>history</code> shows previously run commands</li>
+            <li><code>showpids</code> shows pids of previously run commands</li>
+            <li><code>!n</code> runs the <code>nth</code> previous command</li>
+        </ul>
+    </article>
+
+</section>

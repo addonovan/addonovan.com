@@ -1,3 +1,0 @@
-[submodule "experiments/arm7"]
-	path = experiments/arm7
-	url = git@github.com:addonovan/arm7.js
