@@ -14,6 +14,12 @@ body {
 
 * { font-family: 'Roboto', sans-serif; }
 h1, h2, h3, h4, h5, h6 { font-family: 'Source Serif Pro', serif; }
+pre, code {
+    font-family: 'Robot Mono', monospace;
+    background-color: #dddddd;
+    padding-left: 0.2em;
+    padding-right: 0.2em;
+}
 
 footer {
     align-self: center;
