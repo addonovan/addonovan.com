@@ -11,8 +11,8 @@
     </tr>
     {{#each entries as |entry| ~}}
         <tr>
-            <td><code>{{entry.file}}</code></td>
-            <td><code>{{entry.size}}</code></td>
+            <td class="text"><code>{{entry.file}}</code></td>
+            <td class="number"><code>{{entry.size}}</code></td>
             <td><code>{{entry.modified_time}}</code></td>
             <td><code>{{entry.load_time}}</code></td>
         </tr>

@@ -92,12 +92,15 @@ footer {
     font-size: small;
 }
 
+table td.text { text-align: left !important; }
+table td.number { text-align: right !important; }
+
 /* cache_overview stuff */
 
 table#cache {
     width: 100%;
 }
 
-table#cache td:not(:first-of-type) {
+table#cache td {
     text-align: center;
 }
