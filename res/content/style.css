@@ -107,6 +107,7 @@ footer {
 
 table td.text { text-align: left !important; }
 table td.number { text-align: right !important; }
+table td > code { background-color: transparent; }
 
 /* cache_overview stuff */
 
