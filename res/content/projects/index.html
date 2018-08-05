@@ -68,7 +68,52 @@
         </p>
     </article>
 
-    <article> <h3>FAT32 Image Reader</h3>
+    <article>
+        <h3>gvengine</h3>
+        <p class="info">
+            <span class="item">
+                <a class="github" href="https://github.com/addonovan/gvengine">Github</a>
+            </span>
+            <span class="meta">Language</span>
+            <span class="item">Java</span>
+            <span class="meta">Technologies</span>
+            <span class="item">
+                <a class="github" href="https://github.com/lwjgl/lwjgl">LWJGL 2</a>
+            </span>
+            <span class="item">OpenGL</span>
+        </p>
+        <p>
+            <i>gvengine</i> is a portmanteau of its former name,
+            <abbr title="Generic Voxel Engine Name">GVEN</abbr>, and <i>engine</i>.
+            As its original acronym implies, it is a generic voxel engine, with
+            very simplistic rendering capabilities. This project was created
+            using OpenGL from scratch (via LWJGL) and displays cubes of
+            different colors organized into 16-block cubes called <u>chunks</u>,
+            which are themselves organized into 16-chunk cubes called <u>regions</u>.
+        </p>
+        <p>
+            None of this project is particularly well designed or efficient, as
+            I didn't really understand matrices at the time or any of the math
+            surrounding them. I started the project when I was a sophomore in
+            high school at age 16. This was also my first real experience using
+            git (or any vcs for that matter), so there are multiple commits
+            (including the latest one as of writing this,
+            <a href="https://github.com/addonovan/gvengine/commit/28162c1669a09a9d3c3ef4a8d2f76e5221d1de6b"
+               class="github">
+                <code>28162c1</code>
+            </a>, which do not run properly. The project also doesn't have a
+            build system, so that's really fun to set up every time &#x1f644;.
+        </p>
+        <p>
+            This project include an asynchronous task scheduler which makes heavy
+            use of reflections, because jdk 1.7.x didn't have lambda functions
+            yet, and I thought making <code>Runnable</code>s was ugly (which
+            they are, but it's pretty bad to use reflections instead).
+        </p>
+    </article>
+
+    <article>
+        <h3>FAT32 Image Reader</h3>
         <p class="info">
             <span class="item">
                 <a class="github" href="https://github.com/addonovan/fat32">Github</a>
@@ -147,6 +192,7 @@
             <span class="meta">Languages</span>
             <span class="item">C</span>
             <span class="item">Arm7 Assembly</span>
+            <span class="item">C++</span>
         </p>
         <p>
             This is just a collection of other, smaller school projects which
@@ -175,7 +221,7 @@
             This was a custom-made webframework that I was planning on using for
             my website (this one!), before I decided to go with actix-web
             instead. This was inspired by Gary Bernhardt's screencast on
-            <a href="destroyallsoftware.com">Destroy All Software</a>. While I
+            <a href="//destroyallsoftware.com">Destroy All Software</a>. While I
             didn't end up using the framework, I did get a rough draft of this
             website done with it.
         </p>
@@ -209,6 +255,35 @@
             <li><code>showpids</code> shows pids of previously run commands</li>
             <li><code>!n</code> runs the <code>nth</code> previous command</li>
         </ul>
+    </article>
+
+    <article>
+        <h3>robosim</h3>
+        <p class="info">
+            <span class="item">
+                <a class="github" href="https://github.com/addonovan/robosim">Github</a>
+            </span>
+            <span class="meta">Languages</span>
+            <span class="item">Java</span>
+            <span class="item">Python</span>
+            <span class="meta">Technologies</span>
+            <span class="item">Box2d</span>
+            <span class="item">Jython</span>
+        </p>
+        <p>
+            Robosim was designed to be a top-down simulation of a robot for
+            FTC tournaments. Intended to be used to test programs which would
+            control the robot by reading from its sensors and powering motors,
+            the robot's script was written in Python and the scene would be
+            rendered using LibGDX.
+        </p>
+        <p>
+            Although the program didn't end up fully working out (Box2d was
+            apparently not meant to simulate top-down physics, which I found
+            out during the course of this project), the program was fun to write
+            and I learned how to integrate a friendly Python interface into a
+            program.
+        </p>
     </article>
 
 </section>
