@@ -1,9 +1,10 @@
 extern crate actix_web;
-extern crate handlebars;
-extern crate serde;
 extern crate chrono;
-#[macro_use] extern crate serde_derive;
+extern crate handlebars;
 #[macro_use] extern crate lazy_static;
+extern crate regex;
+extern crate serde;
+#[macro_use] extern crate serde_derive;
 
 use actix_web::App;
 use actix_web::http::Method;
@@ -11,7 +12,7 @@ use actix_web::server;
 
 mod controller;
 mod decorator;
-mod file_cache;
+mod cache;
 
 use controller::Controller;
 

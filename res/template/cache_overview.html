@@ -4,17 +4,17 @@
 </p>
 <table id="cache">
     <tr>
+        <th>Origin</th>
         <th>Name</th>
         <th>Size (B)</th>
-        <th>Last Modified</th>
         <th>Time Loaded</th>
     </tr>
-    {{#each entries as |entry| ~}}
+    {{#each list as |entry| ~}}
         <tr>
-            <td class="text"><code>{{entry.file}}</code></td>
+            <td>{{entry.origin}}</td>
+            <td class="text"><code>{{entry.name}}</code></td>
             <td class="number"><code>{{entry.size}}</code></td>
-            <td><code>{{entry.modified_time}}</code></td>
-            <td><code>{{entry.load_time}}</code></td>
+            <td>{{entry.load_time}}</td>
         </tr>
     {{/each}}
 </table>
