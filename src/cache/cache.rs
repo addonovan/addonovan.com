@@ -98,11 +98,6 @@ impl Cache {
         }
     }
 
-    pub fn file<S>(&mut self, path: S) -> io::Result<Arc<String>>
-        where S: Into<String> {
-        self.file_and_then(path, |input| input)
-    }
-
     /// Gets the content of the file with the given `path` from the cache,
     /// loading the file into cache, if need be. This will also trigger a
     /// refresh of the cache entry, reloading the file if it has been modified
@@ -135,10 +130,10 @@ impl Cache {
 
         // from here, we need to load the file into cache for the first time
         CacheEntry::from_file(path.as_str().into())
-            .map(|mut entry| {
-                entry.transform(action);
+            .map(|entry| {
                 let content = entry.content.clone();
-                self.map.insert(Arc::new(path), entry);
+                self.map.insert(Arc::new(path.clone()), entry);
+                self.transform(path, action);
                 content
             })
     }
