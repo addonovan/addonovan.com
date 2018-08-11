@@ -10,11 +10,13 @@ use actix_web::App;
 use actix_web::http::Method;
 use actix_web::server;
 
+mod cache;
+mod constants;
 mod controller;
 mod decorator;
-mod cache;
 
 use controller::Controller;
+use constants::CONFIG;
 
 mod controllers
 {
@@ -47,7 +49,8 @@ fn main() {
             .finish(),
     ] };
 
+    println!("Binding to address: {}", CONFIG.bind_address);
     server::new(factory)
-        .bind("0.0.0.0:8080").expect("Failed to bind server to address")
+        .bind(CONFIG.bind_address).expect("Failed to bind server to address")
         .run();
 }
