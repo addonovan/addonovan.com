@@ -1,5 +1,6 @@
 use std::path::PathBuf;
 use std::sync::{Arc, MutexGuard};
+use std::time::Instant;
 
 use actix_web::HttpResponse;
 use handlebars::Handlebars;
@@ -10,7 +11,7 @@ use controller::{ControllerError, Result};
 use cache::transform;
 
 //
-// File-helpers
+// Functions
 //
 
 fn content<S>(item: S) -> String
@@ -25,6 +26,20 @@ fn template<S>(item: S) -> String
     format!("{}/{}", TEMPLATE_DIR, item.as_ref())
 }
 
+fn current_year() -> i32 {
+    use chrono::Local;
+    use chrono::Datelike;
+    Local::now().date().year()
+}
+
+fn elapsed(start: Instant) -> u64 {
+    let elapsed = start.elapsed();
+    let seconds = elapsed.as_secs();
+    let nanos = elapsed.subsec_nanos() as u64;
+
+    (seconds * 1000000000) + nanos
+}
+
 //
 // Struct definitions
 //
@@ -33,6 +48,7 @@ pub struct PageBuilder<'a> {
     state: PageState,
     cache: MutexGuard<'a, Cache>,
     hb: &'a Handlebars,
+    start: Instant,
 }
 
 enum PageState {
@@ -45,6 +61,8 @@ enum PageState {
 struct PageInfo {
     style: Arc<String>,
     content: Arc<String>,
+    year: i32,
+    elapsed_time: u64,
 }
 
 //
@@ -61,6 +79,7 @@ impl<'a> PageBuilder<'a> {
             state: PageState::Ok(Arc::new("".to_owned())),
             cache,
             hb,
+            start: Instant::now(),
         }
     }
 
@@ -143,6 +162,8 @@ impl<'a> PageBuilder<'a> {
         let page = PageInfo {
             style,
             content: body,
+            year: current_year(),
+            elapsed_time: elapsed(self.start),
         };
 
         match self.invoke_template(&template, &page) {

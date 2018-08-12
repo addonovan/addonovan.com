@@ -75,9 +75,11 @@ article h3 {
 
 article {
     margin-bottom: 3em;
-    border-left: 5px solid #bf0a30;
     padding-left: 1em;
+    border-left: 5px solid #bf0a30;
 }
+
+article.school { border-left-color: #f58025; }
 
 article p.info {
     margin-top: 0;
