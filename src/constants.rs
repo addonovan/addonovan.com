@@ -9,5 +9,5 @@ pub const CONFIG: Configuration = Configuration {
 
 #[cfg(not(debug_assertions))]
 pub const CONFIG: Configuration = Configuration {
-    bind_address: "0.0.0.0:80",
+    bind_address: "0.0.0.0:8080",
 };
