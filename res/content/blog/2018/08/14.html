@@ -1,0 +1,132 @@
+<section>
+    <p>
+        Hey, I finally got the blog feature to work, how neat is that! It's not
+        as robust as I had originally planned for, but it's still a cool
+        feature. (It's also the slowest part of my website at the time of
+        writing this, at about twice the duration as the static home and
+        projects pages!)
+
+        It's a pretty nifty little thing, but it really could be a whole lot
+        better; luckily, I am planning on improving it, just figured I might
+        ought to get <i>something</i> done with it before worrying about the
+        finer things.
+    </p>
+</section>
+
+<section>
+    <h3>The <code>PageBuilder</code></h3>
+    <p>
+        One of the biggest refactors I did was creating the
+        <code>PageTemplate</code> and <code>PageBuilder</code> structs which
+        have <i>greatly</i> simplified the control flow of all of the
+        controllers.
+    </p>
+    <p>
+        Let's start with the <code>PageBuilder</code>, because it came first.
+        This is essentially just a tri-state <code>Result</code> containing the
+        states listed below.
+    </p>
+    <ol>
+        <li><code>Ok(&lt;Arc&lt;String&gt;&gt;)</code></li>
+        <li><code>NotFound</code></li>
+        <li><code>InternalServerError(&lt;ControllerError&gt;)</code></li>
+    </ol>
+    <p>
+        If you know your HTTP codes, you should realize that these correspond
+        with 200, 404, and 500, respectively. The goal of this was to be able
+        to apply different actions to the page based on its current state,
+        (e.g. if we couldn't load a file's contents, then the page will switch
+        to the <code>NotFound</code> state and will skip any actions that should
+        be performed on the other states.) and only its current state.
+
+        This alleviated a lot of problems with matching and having to do early
+        returns all over the place to avoid accidentally messing with, e.g., the
+        404 page.
+    </p>
+</section>
+
+<section>
+    <h3>The <code>PageTemplate</code></h3>
+    <p>
+        Next, I wanted to format my pages differently with different
+        controllers, but this wasn't as simple as it seemed at the time. I was
+        directly embedding the parameters which could be passed to the page
+        inside the <code>PageBuilder</code> itself, so I needed to refactor a
+        bit to get this template outside and editable. Enter the
+        <code>PageTemplate</code>, which is basically just a fancy way to tell
+        the builder "hey, run Handlebars using this serializable struct with
+        data."
+    </p>
+<pre lang="rust">
+pub trait PageTemplate {
+
+    const NAME: &'static str;
+
+    type TemplateData: Serialize;
+
+    fn data(
+        self,
+        body: Arc&lt;String&gt;,
+        cache: &mut MutexGuard&lt;Cache&gt;
+    ) -> Result&lt;Self::TemplateData&gt;
+
+}
+</pre>
+    <p>
+        Here, the <code>NAME</code> refers the name of the corresponding
+        template file in the res/ directory, and <code>TemplateData</code> is
+        the struct of parameters that will be passed to that template.
+        Interestingly, the current <code>body</code> of the response must be
+        passed so that the template can transform it if needed, and the lock
+        on the global <code>cache</code> must also be passed in case the
+        template needs to access any data from it.
+    </p>
+    <p>
+        This, combined with the <code>PageBuilder</code> was actually able to
+        make development of the site much easier, as you can stitch together
+        templates easily and not have to worry about how they interact. It's a
+        bit slower than it was before, as the page outputs are no longer cached
+        when applicable, but I'm intending to get back to that point.
+    </p>
+</section>
+
+<section>
+    <h3>The Blog</h3>
+    <p>
+        I know you were just dying to find out how I actually implemented the
+        blog, weren't you? Well, currently I have a <code>posts.json</code> file
+        of the following format which just describes all of the posts in the
+        blog in reverse-chronological order. This file is read and parsed when
+        the webserver starts up and templates are generated right then for all
+        blog posts.
+    </p>
+<pre lang="json">
+[
+    {"year": ..., "month": ..., "day": ..., "title": ...},
+    ...
+]
+</pre>
+    <p>
+        When a request is made, the controller will pull the year, month, and
+        day from the URL, then match it to an entry and return a copy of that
+        template. This is then used to fill in the blog post template with
+        general blog-y stuff like:
+    </p>
+    <ul>
+        <li>Title</li>
+        <li>Date</li>
+        <li>Content</li>
+        <li>Previous post</li>
+        <li>Next post</li>
+    </ul>
+    <p>
+        And then the output from that is just the body of the site, so it has
+        to be run through the site's main template for the outer formatting
+        which is on all of the domain's pages.
+    </p>
+    <p>
+        There is a slight problem with this set-up at the moment:<br/>
+        Adding a new blog post requires the server to be restarted, which is a
+        bit weird and overkill, but I can live with it for now.
+    </p>
+</section>

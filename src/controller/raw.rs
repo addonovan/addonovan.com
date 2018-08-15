@@ -7,20 +7,18 @@ use controller::Controller;
 use decorator;
 use decorator::Decorator;
 
-const DIRECTORY: &'static str = "res/raw";
-
-pub struct Raw
-{
+pub struct Raw {
     resolver: decorator::FileResolver,
     reader: decorator::NamedFileReader,
 }
 
 impl Raw
 {
-    pub fn new() -> Self
-    {
+    pub fn new() -> Self {
+        use constants::RAW_DIR;
+
         Raw {
-            resolver: decorator::FileResolver::new(DIRECTORY, true),
+            resolver: decorator::FileResolver::new(RAW_DIR, true),
             reader: decorator::NamedFileReader,
         }
     }
@@ -28,8 +26,7 @@ impl Raw
 
 impl Controller for Raw
 {
-    fn handle(&self, req: &HttpRequest) -> HttpResponse
-    {
+    fn handle(&self, req: &HttpRequest) -> HttpResponse {
         req.match_info()
             .query("tail")
             .ok()

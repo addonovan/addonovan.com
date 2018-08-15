@@ -5,14 +5,15 @@ use std::result;
 
 use actix_web::HttpResponse;
 
-use handlebars::TemplateRenderError;
+use handlebars::{RenderError, TemplateError, TemplateRenderError};
 
 pub type Result<T> = result::Result<T, ControllerError>;
 
 #[derive(Debug)]
 pub enum ControllerError {
     IoError(io::Error),
-    TemplateRenderError(TemplateRenderError),
+    TemplateRenderError(RenderError),
+    TemplateFormatError(TemplateError),
     String(String),
 }
 
@@ -34,7 +35,13 @@ impl From<io::Error> for ControllerError {
 
 impl From<TemplateRenderError> for ControllerError {
     fn from(err: TemplateRenderError) -> Self {
-        ControllerError::TemplateRenderError(err)
+        use handlebars::TemplateRenderError::*;
+
+        match err {
+            IOError(err, _) => ControllerError::IoError(err),
+            RenderError(err) => ControllerError::TemplateRenderError(err),
+            TemplateError(err) => ControllerError::TemplateFormatError(err),
+        }
     }
 }
 
@@ -56,10 +63,28 @@ impl fmt::Display for ControllerError {
 
         match self {
             IoError(err) =>
-                write!(f, "IoError: {}", err),
+                write!(f, "{}", err),
 
             TemplateRenderError(err) =>
-                write!(f, "TemplateFormatError: {}", err),
+                write!(f, "{}", err),
+
+            TemplateFormatError(err) => {
+                writeln!(f, "Template format error!")?;
+
+                if let Some(ref name) = err.template_name {
+                    writeln!(f, "Template name: {}", name)?;
+                }
+
+                match (err.line_no, err.column_no) {
+                    (Some(ref line), Some(ref col)) => {
+                        writeln!(f, "At line {}:{}", line, col)?;
+                    },
+
+                    (_, _) => {},
+                };
+
+                writeln!(f, "{}", err.reason)
+            },
 
             String(msg) =>
                 write!(f, "{}", msg),

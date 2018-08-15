@@ -3,13 +3,20 @@
 
     <head>
         <meta charset="UTF-8">
+        {{#if title}}
+        <title>{{title}} | Austin Donovan</title>
+        {{else}}
         <title>Austin Donovan</title>
+        {{/if}}
 
         <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono|Source+Serif+Pro"
               rel="stylesheet">
+
+        {{#each styles as |style| ~}}
         <style>
             {{{style}}}
         </style>
+        {{/each}}
     </head>
 
     <body>
@@ -18,6 +25,7 @@
         <ul>
             <li><a href="/">Austin Donovan</a></li>
             <li><a href="/projects">Projects</a></li>
+            <li><a href="/blog">Blog</a></li>
         </ul>
     </nav>
 

@@ -43,16 +43,16 @@ impl CacheEntry {
         })
     }
 
-    /// Creates a new cache entry directly using the given source.
-    pub fn from(data: String) -> CacheEntry {
-        let content = Arc::new(data);
-
-        CacheEntry {
-            origin: Origin::Manual,
-            load_time: SystemTime::now(),
-            content,
-        }
-    }
+//    /// Creates a new cache entry directly using the given source.
+//    pub fn from(data: String) -> CacheEntry {
+//        let content = Arc::new(data);
+//
+//        CacheEntry {
+//            origin: Origin::Manual,
+//            load_time: SystemTime::now(),
+//            content,
+//        }
+//    }
 
     /// Transforms the contents of this entry, without modifying the load time
     /// or origin.
@@ -71,7 +71,7 @@ impl CacheEntry {
             Origin::File(ref path) =>
                 refresh_file(self.load_time, path),
 
-            Origin::Manual => (None, RefreshState::NotApplicable),
+//            Origin::Manual => (None, RefreshState::NotApplicable),
         };
 
         // if the refresh was a success, then we'll update our content and

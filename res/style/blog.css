@@ -1,0 +1,16 @@
+#Blog article {
+    margin-bottom: initial;
+    border: initial;
+    padding: initial;
+}
+
+#Blog article > section {
+    padding-left: 1em;
+    border-left: 5px solid #bf0a30;
+}
+
+#Blog header h1,
+#Blog header h4 {
+    margin: 0;
+    padding: 0;
+}

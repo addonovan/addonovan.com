@@ -1,0 +1,22 @@
+<section id="Blog">
+    <article>
+        <header>
+            <h1>{{title}}</h1>
+            <h4>Posted on {{year}}.{{month}}.{{day}}</h4>
+        </header>
+
+        {{{body}}}
+    </article>
+
+    {{#if prev}}
+    <article>
+        Previous Post: <a href="{{prev.link}}">{{prev.title}}</a>
+    </article>
+    {{/if}}
+
+    {{#if next}}
+    <article>
+        Next Post: <a href="{{next.link}}">{{next.title}}</a>
+    </article>
+    {{/if}}
+</section>

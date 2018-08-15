@@ -1,0 +1,13 @@
+<p>
+    Hi! Welcome to my blog! I should probably get around to making more of an
+    introduction, but until then you can just read one of these posts:
+</p>
+
+<ul class="no-bullet">
+    {{#each posts as |post| ~}}
+    <li>
+        {{post.year}}.{{post.month}}.{{post.day}} -
+        <a href="{{post.link}}">{{post.title}}</a>
+    </li>
+    {{/each}}
+</ul>

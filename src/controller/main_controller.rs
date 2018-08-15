@@ -5,8 +5,8 @@ use handlebars::Handlebars;
 
 use controller::{Controller, ControllerError, Result};
 use decorator::{Decorator, FileResolver};
-
-use super::builder::PageBuilder;
+use template::{MainTemplate, CacheOverviewTemplate};
+use util::PageBuilder;
 
 pub struct MainController {
     resolver: FileResolver,
@@ -16,9 +16,9 @@ pub struct MainController {
 impl MainController {
 
     pub fn new() -> Self {
-        use super::CONTENT_DIR;
+        use constants::MAIN_DIR;
         MainController {
-            resolver: FileResolver::new(CONTENT_DIR, false),
+            resolver: FileResolver::new(MAIN_DIR, false),
             hb: Handlebars::new(),
         }
     }
@@ -32,14 +32,12 @@ impl MainController {
     }
 
     pub fn cache_overview(&self, _req: &HttpRequest) -> HttpResponse {
-        let data = {
-            use cache::CACHE;
-            let cache = CACHE.lock().expect("Failed to lock file cache");
-            cache.overview()
-        };
+        let main = MainTemplate::new();
+        let overview = CacheOverviewTemplate::new();
 
-        PageBuilder::from_template(&self.hb, "cache_overview.html", &data)
-            .render_template("format.html")
+        PageBuilder::new(&self.hb)
+            .render_template(overview)
+            .render_template(main)
             .finish()
     }
 
@@ -48,12 +46,14 @@ impl MainController {
 impl Controller for MainController {
 
     fn handle(&self, req: &HttpRequest) -> HttpResponse {
+        let template = MainTemplate::new();
+
         let builder = match self.match_tail(req) {
             Err(_) => PageBuilder::not_found(&self.hb),
             Ok(path) => PageBuilder::from_file(&self.hb, path),
         };
 
-        builder.render_template("format.html")
+        builder.render_template(template)
             .finish()
     }
 

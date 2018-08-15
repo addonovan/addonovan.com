@@ -5,6 +5,7 @@ extern crate handlebars;
 extern crate regex;
 extern crate serde;
 #[macro_use] extern crate serde_derive;
+extern crate serde_json;
 
 use actix_web::App;
 use actix_web::http::Method;
@@ -14,6 +15,8 @@ mod cache;
 mod constants;
 mod controller;
 mod decorator;
+mod template;
+mod util;
 
 use controller::Controller;
 use constants::CONFIG;
@@ -23,8 +26,8 @@ mod controllers
     use controller::*;
 
     lazy_static! {
+        pub static ref BLOG: BlogController = BlogController::new();
         pub static ref MAIN: MainController = MainController::new();
-
         pub static ref RAW: Raw = Raw::new();
     }
 
@@ -42,6 +45,12 @@ fn main() {
         App::new()
             .resource("/cache_overview", |r| {
                 r.method(Method::GET).f(|r| controllers::MAIN.cache_overview(r))
+            })
+            .resource("/blog/{year:.*}/{month:.*}/{day:.*}", |r| {
+                r.method(Method::GET).f(|r| controllers::BLOG.handle(r))
+            })
+            .resource("/blog", |r| {
+                r.method(Method::GET).f(|r| controllers::BLOG.overview(r))
             })
             .resource("/{tail:.*}", |r| {
                 r.method(Method::GET).f(|r| controllers::MAIN.handle(r))

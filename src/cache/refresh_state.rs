@@ -5,6 +5,7 @@ use std::io;
 #[derive(Debug)]
 pub enum RefreshState {
     /// The origin of this entry couldn't be refreshed
+    #[allow(unused)]
     NotApplicable,
 
     /// We didn't need to refresh our cached value (but the origin supported it)
