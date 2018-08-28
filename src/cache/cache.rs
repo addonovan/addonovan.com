@@ -2,7 +2,7 @@ use std::collections::HashMap;
 use std::io;
 use std::sync::{Arc, Mutex};
 use std::time::SystemTime;
-use super::{CacheEntry, RefreshState};
+use super::{CacheEntry, CacheResult, RefreshState};
 
 lazy_static! {
     pub static ref CACHE: Mutex<Cache> = Mutex::new(Cache::new());
@@ -80,36 +80,60 @@ impl Cache {
         }
     }
 
-//    pub fn put<S>(&mut self, key: S, value: S)
-//    where S: Into<String> {
+//    pub fn put<S>(&mut self, key: S, value: S) -> Arc<String>
+//    where
+//        S: Into<String>
+//    {
 //        let (key, value) = (key.into(), value.into());
 //
 //        let entry = CacheEntry::from(value);
+//        let value = entry.content.clone();
 //        self.map.insert(Arc::new(key), entry);
+//
+//        value
 //    }
 
+    pub fn update<S>(&mut self, key: S, value: Arc<String>)
+    where
+        S: Into<String>, {
+        self.transform(key, |_| value);
+    }
+
     pub fn transform<S, F>(&mut self, key: S, action: F)
-    where S: Into<String>,
-          F: FnOnce(Arc<String>) -> Arc<String> {
+    where
+        S: Into<String>,
+        F: FnOnce(Arc<String>) -> Arc<String> {
 
         if let Some(entry) = self.map.get_mut(&key.into()) {
             entry.transform(action);
         }
     }
 
-    pub fn stripped_file<S>(&mut self, path: S) -> io::Result<Arc<String>>
+//    /// Attempts to read the entry with the given `key`. If it isn't in the cache,
+//    /// then and Err will be returned.
+//    ///
+//    /// This method will ONLY ever return `Err` or `Cached`.
+//    pub fn entry(&mut self, key: &String) -> CacheResult<Arc<String>, ()>
+//    {
+//        match self.map.get_mut(key) {
+//            None => CacheResult::Err(()),
+//            Some(value) => CacheResult::Cached(value.content.clone()),
+//        }
+//    }
+
+    pub fn stripped_file<S>(&mut self, path: S) -> CacheResult<Arc<String>, io::Error>
     where
         S: Into<String>,
     {
         self.file_and_then(path, super::transform::strip_whitespace)
     }
 
-    pub fn file<S>(&mut self, path: S) -> io::Result<Arc<String>>
-    where
-        S: Into<String>,
-    {
-        self.file_and_then(path, |it| it)
-    }
+//    pub fn file<S>(&mut self, path: S) -> CacheResult<Arc<String>, io::Error>
+//    where
+//        S: Into<String>,
+//    {
+//        self.file_and_then(path, |it| it)
+//    }
 
     /// Gets the content of the file with the given `path` from the cache,
     /// loading the file into cache, if need be. This will also trigger a
@@ -119,7 +143,7 @@ impl Cache {
         &mut self,
         path: S,
         action: F
-    ) -> io::Result<Arc<String>>
+    ) -> CacheResult<Arc<String>, io::Error>
     where
         S: Into<String>,
         F: FnOnce(Arc<String>) -> Arc<String>,
@@ -129,14 +153,14 @@ impl Cache {
         // if the item is in cache, then we'll just try to refresh it
         if let Some(entry) = self.map.get_mut(&path) {
             match entry.refresh() {
-                RefreshState::Unnecessary => return Ok(entry.content.clone()),
+                RefreshState::Unnecessary => return CacheResult::Cached(entry.content.clone()),
 
                 RefreshState::Success => {
                     entry.transform(action);
-                    return Ok(entry.content.clone());
+                    return CacheResult::New(entry.content.clone());
                 },
 
-                RefreshState::Failure(err) => return Err(err),
+                RefreshState::Failure(err) => return CacheResult::Err(err),
 
                 // all files should be applicable for refreshing, which means
                 // there's a conflicting key somewhere
@@ -147,12 +171,14 @@ impl Cache {
         }
 
         // from here, we need to load the file into cache for the first time
-        CacheEntry::from_file(path.as_str().into())
-            .map(|entry| {
+        match CacheEntry::from_file(path.as_str().into()) {
+            Ok(entry) => {
                 let content = entry.content.clone();
                 self.map.insert(Arc::new(path.clone()), entry);
                 self.transform(path, action);
-                content
-            })
+                CacheResult::New(content)
+            },
+            Err(err) => CacheResult::Err(err),
+        }
     }
 }

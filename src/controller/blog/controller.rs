@@ -53,6 +53,7 @@ fn discover_blogs() -> Vec<BlogTemplate> {
 
     let mut cache = CACHE.lock().expect("Failed to lock file cache!");
     let file = cache.stripped_file(format!("{}/posts.json", BLOG_DIR))
+        .into_result()
         .expect("Couldn't load blog post overview!");
 
     let mut posts: Vec<BlogTemplate> = serde_json::from_str(&file)
@@ -92,7 +93,7 @@ impl BlogController {
         main.style("blog.css");
         main.title(post.title());
 
-        PageBuilder::new(&self.hb)
+        PageBuilder::from_file(&self.hb, post.path())
             .render_template(post)
             .render_template(main)
             .finish()

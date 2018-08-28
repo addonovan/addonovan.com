@@ -1,4 +1,5 @@
 use std::sync::{Arc, MutexGuard};
+use std::path::PathBuf;
 
 use cache::Cache;
 use controller::Result;
@@ -84,6 +85,10 @@ impl BlogTemplate {
         }
     }
 
+    pub fn path(&self) -> PathBuf {
+        self.path.as_str().into()
+    }
+
     pub fn prev(&mut self, prev: &Self) {
         self.prev = Some(prev.as_link());
     }
@@ -104,12 +109,9 @@ impl PageTemplate for BlogTemplate {
 
     fn data(
         self,
-        _body: Arc<String>,
-        cache: &mut MutexGuard<Cache>
+        body: Arc<String>,
+        _cache: &mut MutexGuard<Cache>
     ) -> Result<Self::TemplateData> {
-
-        let path = self.path.as_str().to_owned(); // ugh, nasty much?
-        let body = cache.file(path)?;
 
         Ok(BlogPost {
             title: self.title,

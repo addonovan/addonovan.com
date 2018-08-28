@@ -23,6 +23,8 @@ pre, code {
 
 footer {
     align-self: center;
+    text-align: center;
+    font-size: small;
 }
 
 nav {
@@ -101,10 +103,6 @@ article p.info > span.item {
 
 article p.info a {
     color: inherit !important;
-}
-
-footer {
-    font-size: small;
 }
 
 table td.text { text-align: left !important; }

@@ -1,12 +1,13 @@
 use std::path::PathBuf;
+use std::result::Result::{Err as StdErr, Ok as StdOk};
 use std::sync::{Arc, MutexGuard};
 
 use actix_web::HttpResponse;
 use handlebars::Handlebars;
 
-use cache::Cache;
+use cache::{Cache, transform};
+use cache::CacheResult::*;
 use controller::ControllerError;
-use cache::transform;
 
 use super::*;
 
@@ -15,7 +16,11 @@ use super::*;
 //
 
 pub struct PageBuilder<'a> {
+    key: Option<String>,
     state: PageState,
+    cached: bool,
+
+    body: Arc<String>,
     cache: MutexGuard<'a, Cache>,
     hb: &'a Handlebars,
 }
@@ -31,7 +36,10 @@ impl<'a> PageBuilder<'a> {
         let cache = CACHE.lock().expect("Couldn't lock file cache");
 
         PageBuilder {
-            state: PageState::Ok(Arc::new("".to_owned())),
+            key: None,
+            state: PageState::Ok,
+            cached: false,
+            body: Arc::new("".to_owned()),
             cache,
             hb,
         }
@@ -41,11 +49,16 @@ impl<'a> PageBuilder<'a> {
         let path = path.to_string_lossy().to_owned();
 
         let mut this = Self::new(hb);
+        this.key = Some(path.clone().into());
         match this.cache.file_and_then(path, transform::strip_whitespace) {
-            Ok(content) => this.state = PageState::Ok(content),
+            New(content) => this.body = content,
+            Cached(content) => {
+                this.body = content;
+                this.cached = true;
+            },
             Err(err) => {
-                let err = ControllerError::from(err);
-                this.state = PageState::InternalServerError(err);
+                this.body = Arc::new(ControllerError::from(err).into());
+                this.state = PageState::InternalServerError;
             }
         };
         this
@@ -57,52 +70,87 @@ impl<'a> PageBuilder<'a> {
         this
     }
 
+//    pub fn cache_key<S>(mut self, key: S) -> Self
+//    where
+//        S: Into<String>,
+//    {
+//        let key = key.into();
+//        println!("Searching for cache entry: '{}'", key);
+//
+//        // attempt to fetch the body from the cache if possible
+//        match self.cache.entry(&key) {
+//            New(_) => unreachable!("Constraint on Cache.entry violated!"),
+//            Cached(body) => {
+//                println!("Found in log: {}", key);
+//                self.body = body;
+//                self.cached = true;
+//            },
+//            Err(_) => {
+//                // insert the current body into the cache, just to create the entry
+//                self.body = self.cache.put(key.clone(), self.body.as_str().to_owned());
+//            },
+//        };
+//
+//        self.key = Some(key);
+//
+//        self
+//    }
+
     pub fn render_template<T>(mut self, template: T) -> Self
-    where T: PageTemplate {
+    where
+        T: PageTemplate {
         use util::template as file;
 
-        let body = match self.state {
-            PageState::Ok(ref content) => content.clone(),
-            _ => return self,
-        };
+        if self.state != PageState::Ok || self.cached {
+            return self;
+        }
 
         let template_text = match self.cache.stripped_file(file(T::NAME)) {
-            Ok(it) => it,
+            New(it)
+            | Cached(it) => it,
             Err(err) => {
-                self.state = PageState::InternalServerError(err.into());
+                self.body = Arc::new(ControllerError::from(err).into());
+                self.state = PageState::InternalServerError;
                 return self;
             },
         };
 
-        let data = match template.data(body, &mut self.cache) {
-            Ok(it) => it,
-            Err(err) => {
-                self.state = PageState::InternalServerError(err);
+        let data = match template.data(self.body.clone(), &mut self.cache) {
+            StdOk(it) => it,
+            StdErr(err) => {
+                self.body = Arc::new(err.into());
+                self.state = PageState::InternalServerError;
                 return self;
             },
         };
 
         match self.hb.render_template(&template_text, &data) {
-            Ok(text) => self.state = PageState::Ok(Arc::new(text)),
-            Err(err) => self.state = PageState::InternalServerError(err.into()),
+            StdOk(text) => self.body = Arc::new(text),
+            StdErr(err) => {
+                self.body = Arc::new(ControllerError::from(err).into());
+                self.state = PageState::InternalServerError;
+            },
         };
         return self;
     }
 
-    pub fn finish(self) -> HttpResponse {
+    pub fn finish(mut self) -> HttpResponse {
         use super::PageState::*;
 
-        match self.state {
-            Ok(body) => HttpResponse::Ok().body(body),
-
-            NotFound => HttpResponse::NotFound().body("Ugh"),
-
-            InternalServerError(err) => {
-                let message = format!("Sorry, a problem occurred\n{}", err);
-                HttpResponse::InternalServerError()
-                    .body(message)
-            },
+        // before we return the text, let's throw it back into the cache if we have a key
+        // and it was successfully generated
+        match (self.key, self.cached) {
+            (Some(key), false) => self.cache.update(key, self.body.clone()),
+            (_, _) => {},
         }
+
+        let mut response = match self.state {
+            Ok => HttpResponse::Ok(),
+            NotFound => HttpResponse::NotFound(),
+            InternalServerError => HttpResponse::InternalServerError(),
+        };
+
+        response.body(self.body)
     }
 }
 

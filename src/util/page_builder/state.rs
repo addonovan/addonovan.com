@@ -1,9 +1,6 @@
-use std::sync::Arc;
-
-use controller::ControllerError;
-
+#[derive(PartialEq)]
 pub enum PageState {
-    Ok(Arc<String>),
+    Ok,
     NotFound,
-    InternalServerError(ControllerError),
+    InternalServerError,
 }

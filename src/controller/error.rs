@@ -3,8 +3,6 @@ use std::fmt;
 use std::io;
 use std::result;
 
-use actix_web::HttpResponse;
-
 use handlebars::{RenderError, TemplateError, TemplateRenderError};
 
 pub type Result<T> = result::Result<T, ControllerError>;
@@ -17,13 +15,9 @@ pub enum ControllerError {
     String(String),
 }
 
-impl Into<HttpResponse> for ControllerError {
-    fn into(self) -> HttpResponse {
-        let msg = format!("{}", self);
-        eprintln!("{}", msg);
-
-        HttpResponse::InternalServerError()
-            .body(msg)
+impl Into<String> for ControllerError {
+    fn into(self) -> String {
+        format!("Sorry, a problem occurred!\n{}", self)
     }
 }
 

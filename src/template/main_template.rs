@@ -4,7 +4,7 @@ use std::time::Instant;
 use cache::Cache;
 use controller::Result;
 use util::PageTemplate;
-use util::{style, current_year, elapsed};
+use util::{style, current_date, elapsed};
 
 #[derive(Serialize)]
 pub struct PageInfo {
@@ -12,6 +12,8 @@ pub struct PageInfo {
     styles: Vec<Arc<String>>,
     content: Arc<String>,
     year: i32,
+    month: u32,
+    day: u32,
     elapsed_time: u64,
 }
 
@@ -58,14 +60,18 @@ impl PageTemplate for MainTemplate {
         use controller::ControllerError;
 
         let styles = self.styles.into_iter()
-            .map(|it| cache.stripped_file(it).map_err(ControllerError::from))
+            .map(|it| cache.stripped_file(it).into_result().map_err(ControllerError::from))
             .collect::<Result<Vec<Arc<String>>>>()?;
+
+        let (year, month, day) = current_date();
 
         Ok(PageInfo {
             title: self.title,
             styles,
             content,
-            year: current_year(),
+            year,
+            month,
+            day,
             elapsed_time: elapsed(self.start),
         })
     }

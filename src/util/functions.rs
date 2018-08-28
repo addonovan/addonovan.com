@@ -12,10 +12,11 @@ pub fn style<S>(item: S) -> String
     format!("{}/{}", STYLE_DIR, item.as_ref())
 }
 
-pub fn current_year() -> i32 {
+pub fn current_date() -> (i32, u32, u32) {
     use chrono::Local;
     use chrono::Datelike;
-    Local::now().date().year()
+    let date = Local::now().date();
+    (date.year(), date.month(), date.day())
 }
 
 pub fn elapsed(start: Instant) -> u64 {

@@ -1,5 +1,5 @@
 
-pub const CONTENT_DIR: &'static str     = "content";
+//pub const CONTENT_DIR: &'static str     = "content";
 pub const TEMPLATE_DIR: &'static str    = "template";
 pub const STYLE_DIR: &'static str       = "style";
 
