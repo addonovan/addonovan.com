@@ -8,8 +8,8 @@ pub fn template<S>(item: S) -> String
 
 pub fn style<S>(item: S) -> String
     where S: AsRef<str> {
-    use constants::STYLE_DIR;
-    format!("{}/{}", STYLE_DIR, item.as_ref())
+    use constants::STYLE_LINK;
+    format!("{}/{}", STYLE_LINK, item.as_ref())
 }
 
 pub fn current_date() -> (i32, u32, u32) {

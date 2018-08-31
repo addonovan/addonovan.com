@@ -13,9 +13,8 @@
               rel="stylesheet">
 
         {{#each styles as |style| ~}}
-        <style>
-            {{{style}}}
-        </style>
+        <link href="{{style}}"
+              rel="stylesheet">
         {{/each}}
     </head>
 

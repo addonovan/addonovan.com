@@ -1,11 +1,13 @@
 
 //pub const CONTENT_DIR: &'static str     = "content";
 pub const TEMPLATE_DIR: &'static str    = "template";
-pub const STYLE_DIR: &'static str       = "style";
 
 pub const MAIN_DIR: &'static str        = "content/main";
 pub const RAW_DIR: &'static str         = "content/raw";
 pub const BLOG_DIR: &'static str        = "content/blog";
+// pub const STYLE_DIR: &'static str       = "content/raw/style";
+
+pub const STYLE_LINK: &'static str      = "/raw/style";
 
 pub struct Configuration {
     pub bind_address: &'static str,

@@ -9,7 +9,7 @@ use util::{style, current_date, elapsed};
 #[derive(Serialize)]
 pub struct PageInfo {
     title: Option<String>,
-    styles: Vec<Arc<String>>,
+    styles: Vec<String>,
     content: Arc<String>,
     year: i32,
     month: u32,
@@ -58,16 +58,11 @@ impl PageTemplate for MainTemplate {
         cache: &mut MutexGuard<Cache>
     ) -> Result<Self::TemplateData> {
         use controller::ControllerError;
-
-        let styles = self.styles.into_iter()
-            .map(|it| cache.stripped_file(it).into_result().map_err(ControllerError::from))
-            .collect::<Result<Vec<Arc<String>>>>()?;
-
         let (year, month, day) = current_date();
 
         Ok(PageInfo {
             title: self.title,
-            styles,
+            styles: self.styles,
             content,
             year,
             month,
