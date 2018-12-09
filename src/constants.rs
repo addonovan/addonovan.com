@@ -4,6 +4,7 @@ pub const TEMPLATE_DIR: &'static str    = "template";
 
 pub const MAIN_DIR: &'static str        = "content/main";
 pub const RAW_DIR: &'static str         = "content/raw";
+pub const EXPERIMENT_DIR: &'static str  = "content/experiment";
 pub const BLOG_DIR: &'static str        = "content/blog";
 // pub const STYLE_DIR: &'static str       = "content/raw/style";
 

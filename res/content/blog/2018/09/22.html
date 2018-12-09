@@ -1,0 +1,38 @@
+<!-- TODO into -->
+<section>
+    <h3>Linux Compilation</h3>
+    <p>
+        Because I've been trying (unsuccessfully) for weeks at this point to 
+        build a 64-bit linux kernel for the Raspberry Pi 3 and create a bootable
+        <code>initramfs</code>, I've decided just to follow the actual raspberry
+        pi tutorials for building the kernel and start from there.
+    </p>
+</section>
+
+1. git clone --depth=1 https://github.com/raspberrypi/linux.git
+    a) SSH became kind of unresponsive during this, but whatever
+2. configuration
+    a) KERNEL=kernel7
+    b) make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcm2709_defconfig
+3. compilation
+    a) make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- zImage modules dtbs
+        1) be prepared to be kind of bored
+4. installation
+    a) format SD card
+        1) I just used the gnome disks utility
+        2) /boot is 1 GB FAT
+        3) / is 15 GB ext4
+        4) ROOT=/media/addonovan/_
+        5) BOOT=/media/addonovan/boot
+    b) sudo make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- INSTALL_MOD_PATH=$ROOT modules_install
+    c) sudo mkdir $BOOT/overlays
+    c) sudo cp arch/arm/boot/zImage $BOOT/$KERNEL.img
+    d) sudo cp arch/arm/boot/dts/*.dtb $BOOT
+    e) sudo cp arch/arm/boot/dts/overlays/*.dtb* $BOOT/overlays/
+    f) sudo cp arch/arm/boot/dts/overlays/README $BOOT/overlays/
+5. Init process
+    a) cargo new --bin pious
+    b) cargo build
+    c) sudo mkdir $ROOT/bin
+    d) sudo cp target/debug/pious $ROOT/bin/init
+

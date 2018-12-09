@@ -24,11 +24,13 @@ use constants::CONFIG;
 mod controllers
 {
     use controller::*;
+    use constants::{EXPERIMENT_DIR, RAW_DIR};
 
     lazy_static! {
         pub static ref BLOG: BlogController = BlogController::new();
         pub static ref MAIN: MainController = MainController::new();
-        pub static ref RAW: Raw = Raw::new();
+        pub static ref RAW: Raw = Raw::new(RAW_DIR);
+        pub static ref EXPERIMENT: Raw = Raw::new(EXPERIMENT_DIR);
     }
 
 }
@@ -39,6 +41,13 @@ fn main() {
             .prefix("/raw")
             .resource("/{tail:.*}", |r| {
                 r.method(Method::GET).f(|r| controllers::RAW.handle(r))
+            })
+            .finish(),
+
+        App::new()
+            .prefix("/experiment")
+            .resource("/{tail:.*}", |r| {
+                r.method(Method::GET).f(|r| controllers::EXPERIMENT.handle(r))
             })
             .finish(),
 

@@ -14,11 +14,9 @@ pub struct Raw {
 
 impl Raw
 {
-    pub fn new() -> Self {
-        use constants::RAW_DIR;
-
+    pub fn new(directory: &'static str) -> Self {
         Raw {
-            resolver: decorator::FileResolver::new(RAW_DIR, true),
+            resolver: decorator::FileResolver::new(directory, true),
             reader: decorator::NamedFileReader,
         }
     }

@@ -55,9 +55,8 @@ impl PageTemplate for MainTemplate {
     fn data(
         self,
         content: Arc<String>,
-        cache: &mut MutexGuard<Cache>
+        _cache: &mut MutexGuard<Cache>
     ) -> Result<Self::TemplateData> {
-        use controller::ControllerError;
         let (year, month, day) = current_date();
 
         Ok(PageInfo {
