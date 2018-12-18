@@ -9,3 +9,6 @@ pub use self::blog_template::BlogTemplate;
 
 mod blog_overview;
 pub use self::blog_overview::BlogOverviewTemplate;
+
+mod server_template;
+pub use self::server_template::ServerTemplate;

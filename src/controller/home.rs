@@ -1,9 +1,6 @@
-use std::io::{Error, ErrorKind};
-use std::path::PathBuf;
-
-use actix_web::{HttpRequest, HttpResponse, Responder};
-use controller::{Controller, Result};
-use template::MainTemplate;
+use actix_web::{HttpRequest, HttpResponse};
+use controller::{Controller, ControllerError, Result};
+use template::{MainTemplate, ServerTemplate};
 use util::PageBuilder;
 
 use handlebars::Handlebars;
@@ -52,7 +49,7 @@ impl Home {
 impl Controller for Home {
     fn handle(&self, req: &HttpRequest) -> HttpResponse {
         let main = MainTemplate::new();
-        let server = ServerTemplate::new();
+        let server = ServerTemplate::new(self.get_server_ip().ok());
 
         PageBuilder::new(&self.hb)
             .render_template(server)
