@@ -2,15 +2,21 @@ use std::io::{Error, ErrorKind};
 use std::path::PathBuf;
 
 use actix_web::{HttpRequest, HttpResponse, Responder};
-use controller::Controller;
+use controller::{Controller, Result};
 use template::MainTemplate;
 use util::PageBuilder;
 
-pub struct Home;
+use handlebars::Handlebars;
+
+pub struct Home {
+    hb: Handlebars
+}
 
 impl Home {
     pub fn new() -> Self {
-        Home {}
+        Home {
+            hb: Handlebars::new(),
+        }
     }
 
     pub fn get_server_ip(&self) -> Result<String> {
@@ -45,16 +51,12 @@ impl Home {
 
 impl Controller for Home {
     fn handle(&self, req: &HttpRequest) -> HttpResponse {
-        let builder = match self.match_tail(req) {
-            Err(_) => PageBuilder::not_found(&self.hb),
-            Ok(path) => PageBuilder::from_file(&self.hb, path),
-        };
-
         let main = MainTemplate::new();
         let server = ServerTemplate::new();
 
-        builder.render_template(main)
+        PageBuilder::new(&self.hb)
             .render_template(server)
+            .render_template(main)
             .finish()
     }
 }
