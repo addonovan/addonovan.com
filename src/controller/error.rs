@@ -2,6 +2,7 @@ use std::error::Error;
 use std::fmt;
 use std::io;
 use std::result;
+use std::string::FromUtf8Error;
 
 use handlebars::{RenderError, TemplateError, TemplateRenderError};
 
@@ -13,6 +14,7 @@ pub enum ControllerError {
     TemplateRenderError(RenderError),
     TemplateFormatError(TemplateError),
     String(String),
+    Utf8Error(FromUtf8Error),
 }
 
 impl Into<String> for ControllerError {
@@ -51,6 +53,12 @@ impl<'a> From<&'a str> for ControllerError {
     }
 }
 
+impl From<FromUtf8Error> for ControllerError {
+    fn from(err: FromUtf8Error) -> Self {
+        ControllerError::Utf8Error(err)
+    }
+}
+
 impl fmt::Display for ControllerError {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         use self::ControllerError::*;
@@ -82,6 +90,9 @@ impl fmt::Display for ControllerError {
 
             String(msg) =>
                 write!(f, "{}", msg),
+
+            Utf8Error(err) =>
+                write!(f, "{}", err),
         }
     }
 }
