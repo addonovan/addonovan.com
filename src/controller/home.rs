@@ -22,7 +22,7 @@ impl Home {
             .arg("compute")
             .arg("instances")
             .arg("list")
-            .arg("--filter=game-server")
+            .arg("--filter=website")
             .arg("--format=config")
             .output()?
             .stdout;
