@@ -51,14 +51,14 @@ impl MainController {
             .arg("--format=config")
             .output()?
             .stdout;
+        let instance_info = String::from_utf8(instance_info)?;
 
-        let natip_line = String::from_utf8(instance_info)?
-            .lines()
+        let natip_line = instance_info.lines()
             .filter(|line| line.starts_with("natIP"))
             .take(1)
             .collect::<Vec<&str>>()
             .pop()
-            .ok_or("Game server is not running".into())?;
+            .ok_or(ControllerError::from("Game server is not running"))?;
 
         let ip = natip_line.split(' ')
             .skip(2)
