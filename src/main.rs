@@ -31,6 +31,7 @@ mod controllers
         pub static ref MAIN: MainController = MainController::new();
         pub static ref RAW: Raw = Raw::new(RAW_DIR);
         pub static ref EXPERIMENT: Raw = Raw::new(EXPERIMENT_DIR);
+        pub static ref HOME: Home = Home::new();
     }
 
 }
@@ -48,6 +49,12 @@ fn main() {
             .prefix("/experiment")
             .resource("/{tail:.*}", |r| {
                 r.method(Method::GET).f(|r| controllers::EXPERIMENT.handle(r))
+            })
+            .finish(),
+
+        App::new()
+            .resource("/", |r| {
+                r.method(Method::GET).f(|r| controllers::HOME.handle(r))
             })
             .finish(),
 

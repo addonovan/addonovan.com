@@ -47,7 +47,7 @@ impl Home {
 }
 
 impl Controller for Home {
-    fn handle(&self, req: &HttpRequest) -> HttpResponse {
+    fn handle(&self, _req: &HttpRequest) -> HttpResponse {
         let main = MainTemplate::new();
         let server = ServerTemplate::new(self.get_server_ip().ok());
 
