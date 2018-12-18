@@ -39,26 +39,12 @@ mod controllers
 fn main() {
     let factory = || { vec![
         App::new()
-            .prefix("/raw")
-            .resource("/{tail:.*}", |r| {
+            .resource("/raw/{tail:.*}", |r| {
                 r.method(Method::GET).f(|r| controllers::RAW.handle(r))
             })
-            .finish(),
-
-        App::new()
-            .prefix("/experiment")
-            .resource("/{tail:.*}", |r| {
+            .resource("/experiment/{tail:.*}", |r| {
                 r.method(Method::GET).f(|r| controllers::EXPERIMENT.handle(r))
             })
-            .finish(),
-
-        App::new()
-            .resource("/", |r| {
-                r.method(Method::GET).f(|r| controllers::HOME.handle(r))
-            })
-            .finish(),
-
-        App::new()
             .resource("/cache_overview", |r| {
                 r.method(Method::GET).f(|r| controllers::MAIN.cache_overview(r))
             })
@@ -67,6 +53,9 @@ fn main() {
             })
             .resource("/blog", |r| {
                 r.method(Method::GET).f(|r| controllers::BLOG.overview(r))
+            })
+            .resource("/", |r| {
+                r.method(Method::GET).f(|r| controllers::HOME.handle(r))
             })
             .resource("/{tail:.*}", |r| {
                 r.method(Method::GET).f(|r| controllers::MAIN.handle(r))
