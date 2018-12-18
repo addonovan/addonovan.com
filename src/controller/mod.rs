@@ -12,3 +12,6 @@ pub use self::main_controller::MainController;
 
 mod blog;
 pub use self::blog::BlogController;
+
+mod home;
+pub use self::home::Home;
